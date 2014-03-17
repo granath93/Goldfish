@@ -4,23 +4,79 @@ Skiver allt i bokstavsordning
 Börjar med de selectorerna, sedan id och sist classes
 */
 
-body{
+/*
+------------------------------------------- Här börjar standardselektorerna ----------------------------------------
+*/
+
+a{
+	text-decoration: none;
 	
+}
+
+h1{
+
+}
+
+nav{
+	margin-left: 191px;
+	margin-top: 80px;
 
 }
 
 
 p{
-	
+	font
 
 }
 
+
+/*
+---------------------------------------------- Här börjar classes ----------------------------------------
+*/
+
+.content{
+	background-color: white;
+	width: 100%;
+	height: 667px;
+}
+
+.leftNav{
+	float: left;
+	background-color: #dae1f4;
+	height: 667px;
+	width: 201px;
+	display: block;
+}
+
+.leftNav li{
+	list-style-type: none;
+}
+
+.topNav{
+	
+	background-color: black;
+	color: white;
+	height: 101px;
+	width: 100%;
+	display: fixed;
+	padding:10px;
+}
+
+.topNav a{
+	color:white;
+}
+
+
+.wrapper{
+	width: 100%;
+	margin: auto;
+}
+
+
+/*
+------------------------------------------------- Här börjar id ----------------------------------------
+*/
 
 #id{
-
-}
-
-.class{
-
 
 }
