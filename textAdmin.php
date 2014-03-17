@@ -1,5 +1,9 @@
-<?php include("includes/db.php"); ?>
-<?php include("includes/headAdmin.php"); 
+<?php
+$pageTitle="Text";
+$currentPage = "text"; 
+include("includes/db.php"); 
+include("includes/headAdmin.php"); 
+
 
 ?>
 
@@ -7,9 +11,9 @@
 <div class="leftNav">
 
 	<ul>
-		<li>	<a href="#">Välkomssttext</a> 	</li>
-		<li>	<a href="#">Tävlingsregler</a>	</li>
-		<li>	<a href="#">Mail</a>			</li>
+		<li>	<div class="arrow-right">	<a href="#">Välkomssttext</a>	</div> </li>	
+		<li>								<a href="#">Tävlingsregler</a>			</li>
+		<li>								<a href="#">Mail</a>					</li>
 	</ul>
 
 </div>
@@ -17,9 +21,8 @@
 
 
 
+
 <?php
-
-
 $query = <<<END
  
 SELECT *
@@ -34,7 +37,7 @@ $welcome = ($row->welcomeText);
 $rule = ($row->ruleText);
 $mail = ($row->mailText); 
 
-echo $welcome . "<br>";
+echo $welcome . " <br>";
 //echo $rule. "<br>";
 //echo $mail. "<br>";
 

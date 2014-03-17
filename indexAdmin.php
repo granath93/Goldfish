@@ -1,4 +1,8 @@
-<?php include("includes/headAdmin.php"); ?>
+<?php 
+$currentPage = "index";
+include("includes/headAdmin.php"); 
+
+?>
 
 
 <div class="leftNav">
