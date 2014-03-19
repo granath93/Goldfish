@@ -83,6 +83,9 @@ textarea.field {
 	
 	border-left: 5px solid black;
 }
+
+
+
 .backgroundButton{
 	background-color:#c4db8d;
 	-webkit-border-top-left-radius:10px;
@@ -104,14 +107,19 @@ textarea.field {
 	height:32px;
 	line-height:32px;
 	width:32px;
-}.classname:hover {
+}
+
+.classname:hover {
 	background-color:#5cb811;
-}.classname:active {
+}
+
+.classname:active {
 	position:relative;
 	top:1px;
-}</style>
-/* This button was generated using CSSButtonGenerator.com */
 }
+
+/* This button was generated using CSSButtonGenerator.com */
+
 .content{
 	height: 100%;
 	margin-left: 250px;
