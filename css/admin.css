@@ -1,6 +1,6 @@
 /*
 Detta är ett css till admin-sidan 
-Skiver allt i bokstavsordning
+Skriv allt i bokstavsordning
 Börjar med de selectorerna, sedan id och sist classes
 */
 
@@ -28,7 +28,7 @@ nav{
 
 
 p{
-	font-family: gillsans;
+	font-family: "Gill Sans MT",Verdana,Tahoma;
 
 }
 

@@ -1,5 +1,5 @@
 <?php 
-$currentPage = "index";
+// $currentPage = "index";
 include("includes/headAdmin.php"); 
 
 ?>
