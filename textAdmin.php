@@ -1,21 +1,25 @@
 <?php
-$pageTitle="Text";
-$currentPage = "text"; 
+$pageTitle="Text"; //Skriver in vad som skall stå i "webb-browser-fliken"
+$currentPage = "text"; //Lägger in värde så man vet vilken sida administratören är på
+
+//Lägger till filer som behöver vara med på sidan så att sidan skall fungera rätt
 include("includes/db.php"); 
 include("includes/headAdmin.php"); 
 
+//Hämtar id som idikerar vilken sektion man är i av länkarna i vänstra menyn
 $session = isset($_GET['p']) ? $_GET['p'] : '' ; 
 
-
+//Hämtar all data från tabellen "Text" ur databasen
 $query = <<<END
- 
 SELECT *
 FROM Text;
 END;
 
+//Exekutiverar "verkställer" SELECT-satsen
 $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
 " : " . $mysqli->error); //Performs query
 
+//Loopar igenom alla attribut i tabellen och lägger in de i variabler
 while($row = $res->fetch_object()) { 
 $welcomeTitle = ($row->welcomeTitle); 
 $welcomeText = ($row->welcomeText); 
@@ -38,12 +42,12 @@ $mailText = ($row->mailText);
 
 </div>
 
-
+<div class="content">
 
 <?php
 if($session=="welcome"){?>
 
-<p>Välkommsttext</p>
+<h1>Välkommsttext</h1>
 
 
 <form action="textAdmin.php?p={$session}" method="post">
@@ -58,7 +62,7 @@ if($session=="welcome"){?>
 <?php }
  else if($session=="rules"){ ?>
 
-<p>Tävlingstext</p>
+<h1>Tävlingstext</h1>
 
 
 <form action="textAdmin.php?p={$session}" method="post">
@@ -75,7 +79,7 @@ if($session=="welcome"){?>
 
  else if($session=="mail") {?>
 
-<p>Mailen</p>
+<h1>Mailen</h1>
 
 
 <form action="textAdmin.php?p={$session}" method="post">
@@ -90,7 +94,7 @@ if($session=="welcome"){?>
 <?php } ?>
 
 
-
+</div>
 
 
 

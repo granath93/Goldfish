@@ -31,4 +31,3 @@
 </div>
 
 
-<div class="content">
