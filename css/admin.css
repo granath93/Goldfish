@@ -61,7 +61,8 @@ p{
 .content{
 	width: 100%;
 	height: 667px;
-	margin-left: 50px;
+	margin-left: 250px;
+	margin-top: 30px; 
 }
 
 .leftNav{
