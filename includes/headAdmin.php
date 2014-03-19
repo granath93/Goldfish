@@ -26,7 +26,7 @@
 		<a href="#">Bidrag 						</a>
 		<a href="#">Produkt						</a>
 		<a href="textAdmin.php">Text 			</a>
-		<a href="#">Utseende 					</a>
+		<a href="appearanceAdmin.php">Utseende 	</a>
 	</nav>
 </div>
 
