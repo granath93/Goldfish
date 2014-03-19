@@ -2,6 +2,8 @@
 $pageTitle="Login";
 
 include("includes/db.php");
+//med PDO
+/*
 if(!empty($_POST)){
 	$username = $_POST['user'];
 	$password = $_POST['password'];
@@ -23,9 +25,11 @@ if(!empty($_POST)){
 	}
 	else {
 		echo 'the oassword is wrong. please try again later.';
-	}
+	}*/
 
-	/*$sql = "SELECT * FROM Administrator where adminName = {$username} and adminPassword = {$password}";
+	//med mysqli
+	/*
+	$sql = "SELECT * FROM Administrator where adminName = {$username} and adminPassword = {$password}";
 
 	$result = $mysqli->query($sql);
 	//print_r($result);
