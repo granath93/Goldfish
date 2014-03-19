@@ -83,7 +83,35 @@ textarea.field {
 	
 	border-left: 5px solid black;
 }
-
+.backgroundButton{
+	background-color:#c4db8d;
+	-webkit-border-top-left-radius:10px;
+	-moz-border-radius-topleft:10px;
+	border-top-left-radius:10px;
+	-webkit-border-top-right-radius:10px;
+	-moz-border-radius-topright:10px;
+	border-top-right-radius:10px;
+	-webkit-border-bottom-right-radius:10px;
+	-moz-border-radius-bottomright:10px;
+	border-bottom-right-radius:10px;
+	-webkit-border-bottom-left-radius:10px;
+	-moz-border-radius-bottomleft:10px;
+	border-bottom-left-radius:10px;
+	text-indent:0;
+	border:1px solid #268a16;
+	display:inline-block;
+	color:#000000;
+	height:32px;
+	line-height:32px;
+	width:32px;
+}.classname:hover {
+	background-color:#5cb811;
+}.classname:active {
+	position:relative;
+	top:1px;
+}</style>
+/* This button was generated using CSSButtonGenerator.com */
+}
 .content{
 	height: 100%;
 	margin-left: 250px;
