@@ -17,13 +17,34 @@ body{
 	background-color: white;
 }
 
-h1{
+button.field{
 
 }
 
 form{
 	margin:10px;
+
 }
+
+h1{
+
+}
+
+input.button{
+	margin-left: 646px;
+
+}
+
+input.field{
+	width:750px;
+}
+
+
+label.field{
+	margin-right: 10px;
+	display: block;
+}
+
 
 nav{
 	margin-left: 180px;
@@ -35,6 +56,11 @@ nav{
 p{
 	font-family: "Gill Sans MT",Verdana,Tahoma;
 
+}
+
+textarea.field {
+	width: 750px;
+	height: 300px;
 }
 
 
@@ -59,10 +85,15 @@ p{
 }
 
 .content{
-	width: 100%;
-	height: 667px;
+	height: 100%;
 	margin-left: 250px;
-	margin-top: 30px; 
+	margin-top: 30px;
+	margin-right: 250px;
+}
+
+.field{
+	width:250px;
+	display: block;
 }
 
 .leftNav{
