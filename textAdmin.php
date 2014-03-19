@@ -8,7 +8,13 @@ include("includes/headAdmin.php");
 
 //Hämtar id som idikerar vilken sektion man är i av länkarna i vänstra menyn
 $session = isset($_GET['p']) ? $_GET['p'] : 'welcome' ; 
-$arrow="";
+$welcomeTitle = isset($_POST['welcomeTitle']) ? $_POST['welcomeTitle'] : '' ;  
+$welcomeText = isset($_POST['welcomeText']) ? $_POST['welcomeText'] : '' ;  
+$ruleTitle = isset($_POST['ruleTitle']) ? $_POST['ruleTitle'] : '' ; 
+$ruleText = isset($_POST['ruleText']) ? $_POST['ruleText'] : '' ; 
+$mailTitle = isset($_POST['mailTitle']) ? $_POST['mailTitle'] : '' ;  
+$mailText = isset($_POST['mailText']) ? $_POST['mailText'] : '' ; 
+
 
 //Hämtar all data från tabellen "Text" ur databasen
 $query = <<<END
@@ -96,7 +102,22 @@ if($session=="welcome"){?>
 		</form>
 
 
-<?php } ?>
+<?php 
+
+/*
+if(isset($_POST['msg'])){
+
+		$query =<<<END
+		UPDATE Text
+		SET postMessage = '$updatedMsg'
+		WHERE postId = $postId
+END;
+
+	$res = $mysqli->query($query) or die("Failed");
+
+}*/
+
+} ?>
 
 
 </div>
@@ -105,7 +126,6 @@ if($session=="welcome"){?>
 
 
 <?php
-
 
 
  include("includes/footerAdmin.php"); ?>
