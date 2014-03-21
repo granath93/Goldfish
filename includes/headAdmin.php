@@ -16,11 +16,12 @@
 <div class="topNav">
 	<nav>
 
-		<!--<div class="<?php if($currentPage=="index")echo $class="active" ?>"></div>
+		<!--
+		<div class="<?php if($currentPage=="index")echo $class="active" ?>"></div>
 		<div class="<?php if($currentPage=="#")echo $class="active" ?>"></div>
 		<div class="<?php if($currentPage=="#")echo $class="active" ?>"></div>
 		<div class="<?php if($currentPage=="text")echo $class="active" ?>"></div>
-		<div class="<?php if($currentPage=="#")echo $class="active" ?>"></div>-->
+		<div class="<?php if($currentPage=="Appearance")echo $class="active" ?>"></div>-->
 
 		<a href="indexAdmin.php">Statistik 		</a>
 		<a href="#">Bidrag 						</a>

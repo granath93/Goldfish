@@ -27,6 +27,10 @@ form{
 }
 
 h1{
+	font-size: 2em;
+}
+
+h2{
 
 }
 
@@ -39,6 +43,10 @@ input.field{
 	width:750px;
 }
 
+input.field.title{
+	font-size: 1.5em;
+	padding:0.2em; 
+}
 
 label.field{
 	margin-right: 10px;
@@ -48,8 +56,12 @@ label.field{
 
 nav{
 	margin-left: 180px;
-	margin-top: 80px;
+	margin-top: 70px;
 
+}
+
+nav a{
+	display: inline;
 }
 
 
@@ -63,6 +75,10 @@ textarea.field {
 	height: 300px;
 }
 
+textarea.field.text{
+	padding:0.5em;
+}
+
 
 /*
 ---------------------------------------------- Här börjar classes ----------------------------------------
@@ -71,6 +87,10 @@ textarea.field {
 .active{
 	background-color: #676767;
 	display: inline-block;
+}
+
+.green{
+	background-color: green;
 }
 .arrow-right{
 	top:100%;
@@ -118,7 +138,6 @@ textarea.field {
 	top:1px;
 }
 
-/* This button was generated using CSSButtonGenerator.com */
 
 .content{
 	height: 100%;
@@ -135,7 +154,7 @@ textarea.field {
 .leftNav{
 	float: left;
 	background-color: #dcdcdc;
-	height: 667px;
+	height: 650px;
 	width: 201px;
 	display: block;
 }
@@ -154,7 +173,7 @@ textarea.field {
 .topNav{
 	background-color: black;
 	color: white;
-	height: 101px;
+	height: 90px;
 	width: 100%;
 	padding:10px;
 
