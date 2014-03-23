@@ -170,6 +170,25 @@ textarea.field.text{
 	margin:10px;
 }
 
+.statisticContent h3{
+	margin: 0 0 0 20px;
+	float:left;
+
+}
+
+.statisticContent p{
+	font-size: 70px;
+	float: right;
+	margin:0 20px 0 0;
+	border-right: 2px solid #aaaaaa;
+}
+
+.statisticContent td{
+	width: 250px;
+	height: 50px;
+
+}
+
 .topNav{
 	background-color: black;
 	color: white;
