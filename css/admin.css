@@ -34,10 +34,6 @@ h2{
 
 }
 
-input.button{
-	margin-left: 646px;
-
-}
 
 input.field{
 	width:750px;
@@ -55,21 +51,22 @@ label.field{
 
 
 nav{
-	margin-left: 180px;
+	margin-left: 191px;
 	margin-top: 70px;
-
 }
 
-nav a{
+nav .active{
+	background: rgba(152, 152, 152, 0.5);
 	display: inline;
-}
 
+}
 
 p{
 	font-family: "Gill Sans MT",Verdana,Tahoma;
 
 }
 
+/* ----- En klass som snyggar till formulären på text-sidan ----*/
 textarea.field {
 	width: 750px;
 	height: 300px;
@@ -84,26 +81,28 @@ textarea.field.text{
 ---------------------------------------------- Här börjar classes ----------------------------------------
 */
 
-.active{
-	background-color: #676767;
+/*------ Texten "Antal bidrag" på statistik-sidan ---- */
+.indexAdminh1{
+	margin-bottom: 0;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+/*------- Den pil som visar vilken sektion man är på i respektive sida ------ */
+.arrow{
+	content:">";
+	font-weight:bold;
+	font-size: 20px;
+	text-align: left;
+	margin-left:0;
+	padding-left: 0;
+	
+}
+
+.arrow, 
+.leftNav li{
 	display: inline-block;
 }
-
-.green{
-	background-color: green;
-}
-.arrow-right{
-	top:100%;
-    left:100%;
-	width: 0; 
-	height: 0; 
-	margin-left: -5px;
-	border-top: 5px solid transparent;
-	border-bottom: 5px solid transparent;
-	
-	border-left: 5px solid black;
-}
-
 
 
 .backgroundButton{
@@ -140,7 +139,6 @@ textarea.field.text{
 
 
 .content{
-	height: 100%;
 	margin-left: 250px;
 	margin-top: 30px;
 	margin-right: 250px;
@@ -154,12 +152,12 @@ textarea.field.text{
 .leftNav{
 	float: left;
 	background-color: #dcdcdc;
-	height: 650px;
+	height: 678px;
 	width: 201px;
 	display: block;
 }
 
-.leftNav a:visited, a:hover, a:active{
+.leftNav a, a:visited, a:hover, a:active{
 	color:black;
 
 } 
@@ -167,7 +165,9 @@ textarea.field.text{
 .leftNav li{
 	list-style-type: none;
 	color:black;
-	margin:10px;
+	margin: 10px 10px 10px 10px;
+	display: block;
+
 }
 
 .statisticContent h3{
@@ -192,7 +192,6 @@ textarea.field.text{
 
 .topNav{
 	background-color: black;
-	color: white;
 	height: 90px;
 	width: 100%;
 	padding:10px;
@@ -201,7 +200,7 @@ textarea.field.text{
 
 .topNav a{
 	color:white;
-	padding: 10px;
+	padding: 0 10px 8px 10px;
 
 }
 

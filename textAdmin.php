@@ -8,8 +8,9 @@ include("includes/headAdmin.php");
 
 //Sparar det som finns i alla fält i formuläten och sparar de i variabler
 $session = isset($_GET['p']) ? $_GET['p'] : 'welcome' ; 
-$arrow="";
+$feedback="";
 $empty="";
+$arrow="";
 
 
 //Hämtar all data från tabellen "Text" ur databasen
@@ -53,7 +54,7 @@ END;
 
 //Exekutiverar "verkställer" UPDATE-satsen
 	$res = $mysqli->query($query) or die("Failed");
-
+	$feedback = "Sparat";
 	}
 
 //Här börjar satsen som sparar regeltexten, gör på samma sätt som välkomsttextens sats
@@ -72,7 +73,7 @@ END;
 
 
 	$res = $mysqli->query($query) or die("Failed");
-
+	$feedback = "Sparat";
 	}
 
 //Här börjar satsen som sparar mailtexten, gör på samma sätt som välkomsttextens sats
@@ -88,7 +89,7 @@ END;
 END;
 
 	$res = $mysqli->query($query) or die("Failed");
-
+	$feedback = "Sparat";
 	}
 
 //Hämtar all data från tabellen "Text" ur databasen
@@ -115,13 +116,13 @@ $mailText = ($row->mailText);
 }?>
 
 <!--Menyn på vänser sida-->
-<div class="leftNav">
+<div class="leftNav">								<!--class="<?php if($currentPage=="index")echo $class="active" ?>-->
 
 	<ul>
-		<li>			<a  href="textAdmin.php?p=welcome"> Välkomssttext</a>	 </li>	
-		<li>			<a href="textAdmin.php?p=rules">Tävlingsregler</a>			</li>
-		<li>			<a href="textAdmin.php?p=mail">Mail</a>					</li>
-	</ul>
+		<li>	<div class="arrow"><?php if($session=="welcome")echo ">"?></div>    <a href="textAdmin.php?p=welcome">		Välkomssttext</a> 		</li>	
+		<li>	<div class="arrow"><?php if($session=="rules")echo ">"?></div>		<a href="textAdmin.php?p=rules">		Tävlingsregler</a>		</li>
+		<li>	<div class="arrow"><?php if($session=="mail")echo ">"?></div>		<a href="textAdmin.php?p=mail">			Mail</a>				</li>
+	</ul>	
 
 </div>
 
@@ -131,7 +132,7 @@ $mailText = ($row->mailText);
 
 //Visar vilken sektion man är på, detta fall i välkomsttext-sektionen
 if($session=="welcome"){
-
+$arrow="arrow-right";
 
 //Skriver in den texten som finns i tabellen från databasen och lägger in i en variabel som skall visa texten i formuläret
 $showWelcomeTitle = $welcomeTitle;
@@ -155,13 +156,13 @@ $showWelcomeText = $welcomeText;
 <h1>Välkomsttext</h1>
 
 <form action="textAdmin.php?p=welcome" method="post">
-			<label class="field" for ="title">Rubrik:</label>
+			<label class="field" for ="welcomeTitle">Rubrik:</label>
 			<input class="field title" type="text" id="welcomeTitle" name="welcomeTitle" value="<?php echo $showWelcomeTitle ?>" /><br>
-			<label class="field" for ="text">Välkomsttext:</label>
+			<label class="field" for ="welcomeText">Välkomsttext:</label>
 			<textarea class="field text" id="welcomeText" name="welcomeText"><?php echo $showWelcomeText ?></textarea><br>
 			<button name="reset">Rensa </button>
 			<button name="regret">Ångra </button>
-			<button name="save">Spara </button>
+			<button name="save">Spara </button>  &nbsp; &nbsp; &nbsp; <?php echo $feedback ?>
 		</form>
 
 
@@ -192,13 +193,13 @@ $showRuleText = $ruleText;
 
 
 <form action="textAdmin.php?p=rules" method="post">
-			<label class="field" for ="name">Rubrik:</label>
+			<label class="field" for ="ruleTitle">Rubrik:</label>
 			<input class="field title" type="text" id="ruleTitle" name="ruleTitle" value="<?php echo $showRuleTitle ?>" /><br>
-			<label class="field" for ="text">Tävlingsregler:</label>
+			<label class="field" for ="ruleText">Tävlingsregler:</label>
 			<textarea class="field text" id="ruleText" name="ruleText"><?php echo $showRuleText ?></textarea><br>
 			<button name="reset">Rensa </button>
 			<button name="regret">Ångra </button>
-			<button name="save">Spara </button>
+			<button name="save">Spara </button>  &nbsp; &nbsp; &nbsp; <?php echo $feedback ?>
 		</form>
 
 
@@ -227,28 +228,19 @@ $showMailText = $mailText;
 
 
 <form action="textAdmin.php?p=mail" method="post">
-			<label class="field" for ="name">Rubrik:</label>
+			<label class="field" for ="mailTitle">Rubrik:</label>
 			<input class="field title" type="text" id="mailTitle" name="mailTitle" value="<?php echo $showMailTitle ?>" /><br>
-			<label class="field" for ="text">Mailtext:</label>
+			<label class="field" for ="mailText">Mailtext:</label>
 			<textarea class="field text" id="mailText" name="mailText"><?php echo $showMailText ?></textarea><br>
 			<button name="reset">Rensa </button>
 			<button name="regret">Ångra </button>
-			<button name="save">Spara </button>
+			<button name="save">Spara </button> &nbsp; &nbsp; &nbsp; <?php echo $feedback ?>
 		</form>
 
-
-<?php 
-
-} ?>
-
+<?php } ?>
 
 </div>
 
 
-
-
-<?php
-
-
- include("includes/footerAdmin.php"); ?>
+<?php include("includes/footerAdmin.php"); 
 

@@ -19,7 +19,7 @@ while($row = $res->fetch_object()) {
 	$now= time(); //skapar en variabel $now som tar in dagens datum och tid
 	$now=date("d m Y", $now); //gör om dagens datum till dag, månad, år
 	$firstDayOfMonth= date('1 m Y', strtotime('this month')); //skapar en variabel med veckans första datum
-	$firstDayOfWeek=date('d m Y', strtotime('last monday', time())); //skapar en variabel med månadens första datum
+	$firstDayOfWeek=date('d m Y', strtotime('this monday', time())); //skapar en variabel med månadens första datum
 
 	//räknar upp variabeln $totalEntry för varje bidrag som finns i tabellen
 	$totalEntry ++;
@@ -48,8 +48,11 @@ while($row = $res->fetch_object()) {
 
 <div class="content">
 
-<h1>Statistik</h1>
+<div class="indexAdminh1">Statistik</div>
 
+ Antal bidrag 
+
+<br><br>
 <div class="statisticContent">
 <table>
 <tr>
