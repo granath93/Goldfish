@@ -10,7 +10,11 @@
 	<title>Admin</title>
 </head>
 <body>
+<?php session_start();
 
+if(isset($_SESSION['user_id'])){
+	echo 'you are signed in as an Admin maan';
+} ?>
 <div class="wrapper">
 
 <div class="topNav">
