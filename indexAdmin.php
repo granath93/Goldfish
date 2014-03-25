@@ -22,8 +22,17 @@ while($row = $res->fetch_object()) {
 	$date = date("d m Y", $date); //ordnar alla datum i dag, månad, år
 	$now= time(); //skapar en variabel $now som tar in dagens datum och tid
 	$now=date("d m Y", $now); //gör om dagens datum till dag, månad, år
+	$today=date("D"); //sparar dagens veckodag 
 	$firstDayOfMonth= date('1 m Y', strtotime('this month')); //skapar en variabel med veckans första datum
-	$firstDayOfWeek=date('d m Y', strtotime('this monday', time())); //skapar en variabel med månadens första datum
+
+	//om det är en måndag idag används dagens måndagsdatum
+	if($today=="Mon"){
+		$firstDayOfWeek=date('d m Y', strtotime('this monday', time())); //skapar en variabel med månadens första datum
+	}
+	//om det är tisdag idag eller någon annan dag i veckan sparas senaste måndagens datum
+	else{
+		$firstDayOfWeek=date('d m Y', strtotime('last monday', time())); //skapar en variabel med månadens första datum
+	}
 
 	//räknar upp variabeln $totalEntry för varje bidrag som finns i tabellen
 	$totalEntry ++;
@@ -52,47 +61,47 @@ while($row = $res->fetch_object()) {
 
 <div class="content">
 
-<div class="indexAdminh1">Statistik</div>
+	<div class="h1Admin">Statistik</div>
 
- Antal bidrag 
+ 	Antal bidrag 
 
-<br><br>
-<div class="statisticContent">
-<table>
-<tr>
-	<td>
-		<h3> Idag </h3> 
-	</td>
-	<td>
-		<h3> Denna vecka </h3>
-	</td>
-</tr>
-<tr>
-	<td>
-		<p> <?php echo $dayEntry;?> </p> 
-	</td>
-	<td>
-		<p><?php echo $weekEntry;?> </p> 
-	</td>
-</tr>
-<tr>
-	<td>
-		<h3> Denna månad </h3> 
-	</td>
-	<td>
-		<h3> Totalt </h3>
-	</td>
-</tr>
-<tr>
-	<td>
-		<p> <?php echo $monthEntry;?> </p> 
-	</td>
-	<td>
-		<p><?php echo  $totalEntry;?></p> 
-	</td>
-</tr>
+	<br><br>
+	<div class="statisticContent">
+	<table>
+	<tr>
+		<td>
+			<h3> Idag </h3> 
+		</td>
+		<td>
+			<h3> Denna vecka </h3>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p> <?php echo $dayEntry;?> </p> 
+		</td>
+		<td>
+			<p><?php echo $weekEntry;?> </p> 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<h3> Denna månad </h3> 
+		</td>
+		<td>
+			<h3> Totalt </h3>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p> <?php echo $monthEntry;?> </p> 
+		</td>
+		<td>
+			<p><?php echo  $totalEntry;?></p> 
+		</td>
+	</tr>
 
-</table>
+	</table>
 
 
 </div>

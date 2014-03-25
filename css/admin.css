@@ -82,11 +82,7 @@ textarea.field.text{
 */
 
 /*------ Texten "Antal bidrag" på statistik-sidan ---- */
-.indexAdminh1{
-	margin-bottom: 0;
-	font-size: 2em;
-	font-weight: bold;
-}
+
 
 /*------- Den pil som visar vilken sektion man är på i respektive sida ------ */
 .arrow{
@@ -168,6 +164,12 @@ textarea.field.text{
 	margin: 10px 10px 10px 10px;
 	display: block;
 
+}
+
+.h1Admin{
+	margin-bottom: 0;
+	font-size: 2em;
+	font-weight: bold;
 }
 
 .statisticContent h3{
