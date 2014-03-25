@@ -14,6 +14,9 @@
 
 if(isset($_SESSION['user_id'])){
 	echo 'you are signed in as an Admin maan';
+}
+if(!isset($_SESSION['user_id'])){
+	header('location:login.php');
 } ?>
 <div class="wrapper">
 

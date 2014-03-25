@@ -4,9 +4,7 @@ $currentPage = "index";
 
 include("includes/headAdmin.php"); 
 include("includes/db.php");
-if(!isset($_SESSION['user_id'])){
-	header('location:login.php');
-}
+
 $dayEntry =0;
 $weekEntry =0;
 $monthEntry =0;
