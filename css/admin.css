@@ -66,6 +66,13 @@ p{
 
 }
 
+p, .button{
+	display: inline;
+	margin: 3px;
+	vertical-align:middle;
+}
+
+
 /* ----- En klass som snyggar till formulären på text-sidan ----*/
 textarea.field {
 	width: 750px;
@@ -145,6 +152,13 @@ textarea.field.text{
 	display: block;
 }
 
+.h1Admin{
+	margin-bottom: 0;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+
 .leftNav{
 	float: left;
 	background-color: #dcdcdc;
@@ -166,11 +180,7 @@ textarea.field.text{
 
 }
 
-.h1Admin{
-	margin-bottom: 0;
-	font-size: 2em;
-	font-weight: bold;
-}
+
 
 .statisticContent h3{
 	margin: 0 0 0 20px;
