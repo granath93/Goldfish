@@ -28,7 +28,7 @@ if(!isset($_SESSION['user_id'])){
 		<a class=" <?php if($currentPage=="product")echo "active"?>"  		href="productAdmin.php">Produkt					</a>
 		<a class=" <?php if($currentPage=="text")echo "active"?>"  			href="textAdmin.php">Text 						</a>
 		<a class=" <?php if($currentPage=="Appearance")echo "active"?>" 	href="appearanceAdmin.php">Utseende 			</a>
-	
+		<a class=" <?php if($currentPage=="logout") echo "active"?>"		href="logout.php">Logga ut                      </a>
 	</nav>
 </div>
 
