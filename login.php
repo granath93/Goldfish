@@ -1,7 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/normalize.css" >
+<link rel="stylesheet" href="css/admin.css" >
+<script src="#" charset="utf-8"></script>
+	<title>Login</title>
+</head>
+<body>
+
+
+
 <?php
 require 'includes/db.php';
 $pageTitle="Login";
-//tom array som ges värden vid fel
+//tom array som ger värden vid fel
 $error = array();
 //kollar om textrutorna är tomma
 if(!empty($_POST)){
@@ -14,7 +26,7 @@ if(!empty($_POST)){
 	//meddelande ut
 	foreach($_POST AS $key => $value){
 		if(empty($value) && in_array($key, $required_field)){
-			$error[] = 'all fields are required';
+			$error[] = 'All fields are required';
 			break 1;
 		}
 	}
@@ -33,11 +45,13 @@ if(!empty($_POST)){
 				
 		}
 		else {
-			$error[] = 'your username or password is wrong!';
+			$error[] = 'Your username and/or password is wrong!';
 			
 		}
+		$result->free();
 	}
 	print_r($error);
+
 }	
 ?>
 
