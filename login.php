@@ -25,7 +25,7 @@ if(!empty($_POST)){
 	//meddelande ut
 	foreach($_POST AS $key => $value){
 		if(empty($value) && in_array($key, $required_field)){
-			$error[] = 'All fields are required';
+			$error[] = 'Alla fält måste vara ifyllda!';
 			break 1;
 		}
 	}
@@ -44,12 +44,19 @@ if(!empty($_POST)){
 				
 		}
 		else {
-			$error[] = 'Your username and/or password is wrong!';
+			$error[] = 'Felaktig inloggning!';
 			
 		}
 		$result->free();
 	}
-	print_r($error);
+	$content = '';
+		
+	foreach($error as $e){
+	
+		echo '<p>'.$e.'</p>';
+	}
+		
+
 
 }	
 ?>

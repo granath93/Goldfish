@@ -5,4 +5,8 @@ $currentPage="entry";
 include("includes/headAdmin.php"); 
 include("includes/db.php");
 
+
 ?>
+<div class="leftNav">
+	</div>
+<?php include("includes/footerAdmin.php"); ?>
