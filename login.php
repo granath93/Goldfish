@@ -64,9 +64,9 @@ if(!empty($_POST)){
 	<div class="loginForm">
 <form method="post" action="">
 
-	User <input type="text" name="user"><br/>
-	Pass  <input type="password" name="password"><br/>
-	<input type="submit" name="submit" value="log in"  />
+	Admin <input type="text" name="user"><br/>
+	Lösenord <input type="password" name="password"><br/>
+	<input type="submit" name="submit" value="Logga in"  />
 </div>
 
 </form>

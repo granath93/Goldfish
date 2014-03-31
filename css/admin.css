@@ -1,7 +1,7 @@
 /*
 Detta är ett css till admin-sidan 
 Skriv allt i bokstavsordning
-Börjar med de selectorerna, sedan id och sist classes
+Börjar med de selectorerna, sedan  classes och sist id
 */
 
 /*
@@ -185,7 +185,7 @@ textarea.field.text{
 	margin: 10% auto;
 	text-align: right;
 	line-height: 40px;
-    width: 220px;
+    width: 250px;
     height: 120px;
     background-color: #dcdcdc;
     border-radius: 5px;
