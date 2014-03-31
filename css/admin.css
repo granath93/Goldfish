@@ -130,7 +130,7 @@ textarea.field.text{
 	line-height:32px;
 	width:32px;
 }
-
+/*vad är detta nedanför?*/
 .classname:hover {
 	background-color:#5cb811;
 }
@@ -139,6 +139,7 @@ textarea.field.text{
 	position:relative;
 	top:1px;
 }
+/*vad är detta ovanför?*/
 
 
 .content{
@@ -187,6 +188,8 @@ textarea.field.text{
     width: 220px;
     height: 120px;
     background-color: #dcdcdc;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px -1px;
 
 
 
