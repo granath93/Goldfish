@@ -1,11 +1,11 @@
 <?php 
 $pageTitle="Appearance"; //Skriver in vad som skall stå i "webb-browser-fliken"
-$currentPage = "Appearance"; //Lägger in värde så man vet vilken sida administratören är på
+$currentPage="Appearance"; //Lägger in värde så man vet vilken sida administratören är på
 
 include("includes/db.php"); 
 include("includes/headAdmin.php");
 
-//Hämtar id som idikerar vilken sektion man är i av länkarna i vänstra menyn
+//Hämtar id som indikerar vilken sektion man är i av länkarna i vänstra menyn
 $session = isset($_GET['p']) ? $_GET['p'] : '' ;
 
 //Hämtar all data från tabellen "Text" ur databasen

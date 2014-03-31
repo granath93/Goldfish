@@ -25,7 +25,7 @@ if(!isset($_SESSION['user_id'])){
 	<nav>
 
 		<a class=" <?php if($currentPage=="index")echo "active"?>"  		href="indexAdmin.php">Statistik 				</a>
-		<a class=" <?php if($currentPage=="#")echo "active"?>"  			href="#">Bidrag 								</a>
+		<a class=" <?php if($currentPage=="entry")echo "active"?>"  			href="#">Bidrag 								</a>
 		<a class=" <?php if($currentPage=="product")echo "active"?>"  		href="productAdmin.php">Produkt					</a>
 		<a class=" <?php if($currentPage=="text")echo "active"?>"  			href="textAdmin.php">Text 						</a>
 		<a class=" <?php if($currentPage=="Appearance")echo "active"?>" 	href="appearanceAdmin.php">Utseende 			</a>
