@@ -1,12 +1,12 @@
 <?php 
 $pageTitle="Appearance"; //Skriver in vad som skall stå i "webb-browser-fliken"
-$currentPage="Appearance"; //Lägger in värde så man vet vilken sida administratören är på
+$currentPage = "Appearance"; //Lägger in värde så man vet vilken sida administratören är på
 
 include("includes/db.php"); 
 include("includes/headAdmin.php");
 
-//Hämtar id som indikerar vilken sektion man är i av länkarna i vänstra menyn
-$session = isset($_GET['p']) ? $_GET['p'] : '' ;
+//Hämtar id som idikerar vilken sektion man är i av länkarna i vänstra menyn
+$session = isset($_GET['p']) ? $_GET['p'] : 'Background' ;
 
 //Hämtar all data från tabellen "Text" ur databasen
 $query = <<<END
@@ -28,11 +28,11 @@ $logotypeId = ($row->logotypeId);
 
 
 <div class="leftNav">
-<ul>
+	<ul>
+		<li>	<div class="arrow"><?php if($session=="Background")echo ">"?></div>    <a href="appearanceAdmin.php?p=Background">		Bakgrund</a> 		</li>	
+		<li>	<div class="arrow"><?php if($session=="Logotyp")echo ">"?></div>		<a href="appearanceAdmin.php?p=Logotyp">			Logotyp</a>			</li>
 		
-<li><a href="appearanceAdmin.php?p=Background">>Bakgrund</a></li>	
-<li><a href="appearanceAdmin.php?p=Logotype">Logotyp</a></li>
-	</ul>	
+	</ul>
 </div>
 <div class="content">
 <?php
