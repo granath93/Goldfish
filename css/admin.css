@@ -180,6 +180,19 @@ textarea.field.text{
 
 }
 
+.loginForm {
+	margin: 10% auto;
+	text-align: right;
+	line-height: 40px;
+    width: 220px;
+    height: 120px;
+    background-color: #dcdcdc;
+
+
+
+
+}
+
 
 
 .statisticContent h3{
@@ -220,6 +233,13 @@ textarea.field.text{
 .wrapper{
 	width: 100%;
 	margin: auto;
+}
+.logbox{
+	float: left;
+	background-color: #dcdcdc;
+	height: 678px;
+	width: 201px;
+	display: block;
 }
 
 

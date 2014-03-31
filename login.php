@@ -12,7 +12,6 @@
 
 <?php
 require 'includes/db.php';
-$pageTitle="Login";
 //tom array som ger värden vid fel
 $error = array();
 //kollar om textrutorna är tomma
@@ -62,11 +61,13 @@ if(!empty($_POST)){
 	<meta charset="utf-8">
 </head>
 <body>
+	<div class="loginForm">
 <form method="post" action="">
 
 	User <input type="text" name="user"><br/>
-	Pass <input type="password" name="password"><br/>
+	Pass  <input type="password" name="password"><br/>
 	<input type="submit" name="submit" value="log in"  />
+</div>
 
 </form>
 </body>
