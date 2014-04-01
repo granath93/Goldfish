@@ -22,15 +22,28 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 while($row = $res->fetch_object()) { 
 $background = ($row->background);
 $logotypeId = ($row->logotypeId);
+$logotypeUrl = ($row->logotypeUrl);
 }
 
+if(isset($_POST['save'])){
+
+if(isset($_POST['logotypeImg']) && isset($_POST['logotypeUrl']) ){
+
+	$logotypeImg = isset($_POST['logotypeImg']) ? $_POST['logotypeImg'] : '' ;  
+	//$welcomeText = isset($_POST['logotypeUrl']) ? $_POST['logotypeUrl'] : '' ; 
 ?>
 
 
 <div class="leftNav">
 	<ul>
-		<li>	<div class="arrow"><?php if($session=="Background")echo ">"?></div>    <a href="appearanceAdmin.php?p=Background">		Bakgrund</a> 		</li>	
-		<li>	<div class="arrow"><?php if($session=="Logotyp")echo ">"?></div>		<a href="appearanceAdmin.php?p=Logotyp">			Logotyp</a>			</li>
+		<li>
+			<div class="arrow"><?php if($session=="Background")echo ">"?></div>
+			<a href="appearanceAdmin.php?p=Background">	Bakgrund</a> 
+			</li>	
+		<li>
+			<div class="arrow"><?php if($session=="Logotype")echo ">"?></div>
+			<a href="appearanceAdmin.php?p=Logotype">Logotyp</a>
+		</li>
 		
 	</ul>
 </div>
@@ -41,15 +54,33 @@ if($session=="Background"){?>
 
 <h1>Bakgrund</h1>
 
-
-<div class="backgroundButton">
-</div>
+<form action"appearanceAdmin.php?p=Background" method="post"
+enctype="multipart/form-data">
+<input type="textfield" name"Hex-värde" id="color"><br>
+<input type="submit" name"Skicka" id"color"></br>
+</form>
+<!--<div class="backgroundButton">
+</div>-->
 
 
 <?php }
 //ifall det är logotype-sidan
  else if($session=="Logotype"){ ?>
 <h1>Logotyp</h1>
+
+
+<form action="appearanceAdmin.php?p=Logotyp" method="post"
+enctype="multipart/form-data">
+
+<label for="file">Välj en fil att ladda upp:</label>
+<input type="file" name="file" id="file"><br>
+<input type="submit" name="submit" value="Ladda upp">
+
+<form action="appearanceAdmin.php?p=Logotype" method="post">
+			<label class="field" for ="logotypeUrl">Logotypslänk</label>
+			<textarea class="field text" id="logotypeUrl" name="logotypeUrl"><?php echo $showLogotypeUrlText ?></textarea><br>
+</form>
  
-<?php } ?>
 </div>
+
+?>
