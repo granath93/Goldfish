@@ -97,9 +97,32 @@ $showLogotypeImg = $logotypeImg;
 
 <form action="testAppaea.php?p=Logotype" method="post">
 			
+			
+
+
+<form method="post" action="upload_logotype.php" enctype="multipart/form-data" target="leiframe">
+      <label>Välj en bild som är din produkt</label><br>
+      <input type="file" name="logotype"/>
+      <input type="submit" value="Ladda upp"/>
+    </form>
+    <iframe name="leiframe" width="700" height="300"></iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--
+
 			<label class="file" for ="logotypeImg">Logotypsbild:</label>
 			
-			<!-- <textarea class="field text" id="logotypeImg" name="logotypeImg"><?php echo $showLogotypeImg ?></textarea><br>-->
+		 <textarea class="field text" id="logotypeImg" name="logotypeImg"><?php echo $showLogotypeImg ?></textarea><br>
 			<label for="file">Välj en fil att ladda upp:</label>
 			<input type="file" name="logotypeImg" id="logotypeImg"><br> Nuvarande Logotyp: <?php echo $showLogotypeImg ?>
 			<label class="field" for ="logotypeUrl">Logotyp-Url</label>
