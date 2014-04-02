@@ -33,14 +33,14 @@ $entryImage = ($row->entryImage);
 <div class="leftNav"></div>
 	<div class="content">
 		<img class="imgStyle" src="<?php echo $entryImage ?>" /> <br/>
-		<div class="testwrapper">
+		<div class="entryWrapper">
 			<div class="entryText">
 				<p><?php echo $entryName ?></p> <br/>
 				<p>Skapare</p> <br/>
 				<p>Ort</p> <br/>
 				<p>Röster</p> 
 			</div>
-			<div class="buttonbajs">
+			<div class="entryBtn">
 				<img src="images/godkannBtn.png" />
 				<img src="images/tabortBtn.png" />
 			</div>
