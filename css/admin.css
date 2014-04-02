@@ -159,6 +159,12 @@ textarea.field.text{
 	font-weight: bold;
 }
 
+.imgStyle{
+	border:3px;
+	width: 20%;
+	height: auto;
+}
+
 
 .leftNav{
 	float: left;
@@ -195,6 +201,7 @@ textarea.field.text{
 
 
 }
+
 
 
 
