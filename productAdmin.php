@@ -26,18 +26,14 @@ $session = isset($_GET['p']) ? $_GET['p'] : 'product' ;
 if($session=="product"){
 	$arrow="arrow-right"; 
 
-
  ?>
 
 		<div class="h1Admin">Produkt</div>
 
-<form action="productAdmin.php?p=product" method="post"
-enctype="multipart/form-data">
-<label for="file">Välj en fil att ladda upp:</label>
-<input type="file" name="file" id="file"><br>
-<input type="submit" name="submit" value="Ladda upp">
-</form>
-
+ 	<form method="post" action="upload_file.php" enctype="multipart/form-data">
+      <input type="file" name="image"/>
+      <input type="submit" value="upload"/>
+    </form>
 
 
 <?php } 
