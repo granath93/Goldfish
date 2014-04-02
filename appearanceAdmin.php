@@ -28,7 +28,7 @@ while($row = $res->fetch_object()) {
 $logotypeUrl = ($row->logotypeUrl); 
 $logotypeImg = ($row->logotypeImg);
 //$background = ($row->background); 
-//lägg in testdata i logotypeUrl+Img för att testa
+
 }
 
 
@@ -67,10 +67,33 @@ END;
 </div>
 
 <div class="content">
+<?php
+$showColor = $color; //ska sättas till antingen red/green/blue/lightgray via formuläret
+$colorred = "##E90649";
+$colorgreen = "#87D300";
+$colorblue = "#78C7EB";
+$colorlightgray = "#BDB8B1";
+if ($session =="Background"){
+	?>
 
+	<h1>Bakgrund</h1>
+
+	<form method="post" action="upload_background.php" enctype="multipart/form-data" target="leiframe">
+	<!-- <input type="field" for ="color" name="Röd" value="Röd">  ifall man ska kunna skriva in själv, fungerar inte just nu dock -->
+	<input type="Submit" name="Grön" value="Gröne">
+	<input type="Submit" name="Grön" value="Grön">
+	<input type="Button" name="Blå" value="Blå">
+	<input type="Button" name="Ljusgrå" value="Ljusgrå">
+</form>
+	
+<iframe name="leiframe" width="341,5" height="192" style="background-color:<?php echo $colorred ?>"></iframe>
+	<?php
+}
+?>
 <?php
 
 //Visar vilken sektion man är på, detta fall i välkomsttext-sektionen
+
 if($session=="Logotype"){
 $arrow="arrow-right";
 
@@ -95,13 +118,9 @@ $showLogotypeImg = $logotypeImg;
 
 <h1>Logotyp</h1>
 
-<form action="testAppaea.php?p=Logotype" method="post">
-			
-			
-
 
 <form method="post" action="upload_logotype.php" enctype="multipart/form-data" target="leiframe">
-      <label>Välj en bild som är din produkt</label><br>
+      <label>Välj en bild som är din logotyp</label><br>
       <input type="file" name="logotype"/>
       <input type="submit" value="Ladda upp"/>
     </form>
