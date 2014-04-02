@@ -96,13 +96,14 @@ $showLogotypeImg = $logotypeImg;
 <h1>Logotyp</h1>
 
 <form action="testAppaea.php?p=Logotype" method="post">
-			<label class="field" for ="logotypeUrl">Logotyp-Url</label>
-			<input class="field title" type="text" id="logotypeUrl" name="logotypeUrl" value="<?php echo $showLogotypeUrl ?>" /><br>
+			
 			<label class="file" for ="logotypeImg">Logotypsbild:</label>
 			
 			<!-- <textarea class="field text" id="logotypeImg" name="logotypeImg"><?php echo $showLogotypeImg ?></textarea><br>-->
 			<label for="file">Välj en fil att ladda upp:</label>
-			<input type="file" name="logotypeImg" id="logotypeImg"><?php echo $showLogotypeImg ?><br>
+			<input type="file" name="logotypeImg" id="logotypeImg"><br> Nuvarande Logotyp: <?php echo $showLogotypeImg ?>
+			<label class="field" for ="logotypeUrl">Logotyp-Url</label>
+			<input class="field title" type="text" id="logotypeUrl" name="logotypeUrl" value="<?php echo $showLogotypeUrl ?>" /><br>
 			<button name="reset">Rensa </button>
 			<button name="regret">Ångra </button>
 			<button name="save">Spara </button>  &nbsp; &nbsp; &nbsp; <?php echo $feedback ?>
