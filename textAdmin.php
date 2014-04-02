@@ -35,7 +35,8 @@ $mailText = ($row->mailText);
 }
 
 
-//När användaren trycker på "spara"-knappen uppdateras och sparas välkomsttexten, reglerna och mailen i respektive tabeller/fält som ligger i formuläret
+//När användaren trycker på "spara"-knappen uppdateras och sparas välkomsttexten, 
+//reglerna och mailen i respektive tabeller/fält som ligger i formuläret
 if(isset($_POST['save'])){
 
 //Här börjar satsen som sparar välkomsttexten
