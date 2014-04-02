@@ -30,10 +30,22 @@ if($session=="product"){
 
 		<div class="h1Admin">Produkt</div>
 
- 	<form method="post" action="upload_file.php" enctype="multipart/form-data">
+
+
+<form method="post" action="upload_image.php" enctype="multipart/form-data" target="leiframe">
+      <label>Välj en bild som är din produkt</label><br>
       <input type="file" name="image"/>
-      <input type="submit" value="upload"/>
+      <input type="submit" value="Ladda upp"/>
     </form>
+    <iframe name="leiframe" width="700" height="300"></iframe>
+
+
+<form method="post" action="upload_image.php" enctype="multipart/form-data" target="leiframe">
+      <label>Välj en bild som skall vara skuggningen till produkten</label><br>
+      <input type="file" name="image"/>
+      <input type="submit" value="Ladda upp"/>
+    </form>
+    <iframe name="leiframe" width="700" height="300"></iframe>
 
 
 <?php } 
