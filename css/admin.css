@@ -147,6 +147,15 @@ textarea.field.text{
 	margin-top: 30px;
 	margin-right: 250px;
 }
+.entryText{
+	width:75px;
+	font-size: 12px;
+	border: 2px solid;
+}
+.entryText, 
+.testDiv li{
+	display:inline-block;
+}
 
 .field{
 	width:250px;
