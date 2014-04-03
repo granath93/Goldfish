@@ -47,7 +47,9 @@ if($session=="product"){
     </form>
     <iframe name="frame2" width="500" height="300"></iframe>
 
-
+			<button name="reset">Rensa </button>
+			<button name="regret">Ångra </button>
+			<button name="save">Spara </button> 
 <?php } 
 
 if($session=="color"){
