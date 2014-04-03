@@ -31,7 +31,7 @@ h1{
 }
 
 h2{
-
+	margin:0;
 }
 
 
@@ -151,19 +151,23 @@ textarea.field.text{
 .entryBtn{
 
 	width:20%;
-	float:left;
+	float:right;
 	margin-left:20px;
 }
+.entryImg{
+	height:100%;
+}
+
 .entryText{
 	width:75px;
 	font-size: 12px;
-	border: 2px solid;
 	float:left;
 }
 .entryWrapper{
-
-	width:30%;
+	outline:grey solid 1px;
+	width:150px;
 	float:left;
+	margin: 20px;
 }
 
 .field{
@@ -179,7 +183,7 @@ textarea.field.text{
 
 .imgStyle{
 	border:3px;
-	width: 20%;
+	width: 100%;
 	height: auto;
 }
 
