@@ -155,7 +155,7 @@ textarea.field.text{
 	margin-left:20px;
 }
 .entryImg{
-	height:100%;
+	
 }
 
 .entryText{
@@ -183,9 +183,9 @@ textarea.field.text{
 }
 
 .imgStyle{
-	border:3px;
-	width: 100%;
-	height: auto;
+	width:100%;
+	height:150px;
+	
 }
 
 
