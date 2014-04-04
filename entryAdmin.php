@@ -44,8 +44,8 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 								</div>
 								
 								<div class="entryBtn">
-									<img src="images/godkannBtn.png"/>
-									<img src="images/tabortBtn.png" />
+									<input type="image" src="images/godkannBtn.png"/>
+									<input type="image" src="images/tabortBtn.png">
 								</div>
 						</div>
 

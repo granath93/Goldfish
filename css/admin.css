@@ -162,6 +162,7 @@ textarea.field.text{
 	width:75px;
 	font-size: 12px;
 	float:left;
+	margin-left: 3px;
 }
 .entryWrapper{
 	outline:grey solid 1px;
