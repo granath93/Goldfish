@@ -1,6 +1,6 @@
 <?php
-$pageTitle="Logotyp"; //Skriver in vad som skall stå i "webb-browser-fliken"
-$currentPage = "Logotype"; //Lägger in värde så man vet vilken sida administratören är på
+$pageTitle="Bakgrund"; //Skriver in vad som skall stå i "webb-browser-fliken"
+$currentPage = "Background"; //Lägger in värde så man vet vilken sida administratören är på
 
 //Lägger till filer som behöver vara med på sidan så att sidan skall fungera rätt
 include("includes/db.php"); 
@@ -26,9 +26,7 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 //Loopar igenom alla attribut i tabellen och lägger in de i variabler
 while($row = $res->fetch_object()) { 
 $logotypeUrl = ($row->logotypeUrl); 
-$logotypeImg = ($row->logotypeImg);
-//$background = ($row->background); 
-
+$logotypeImg = ($row->logotypeImg); 
 }
 
 
@@ -48,6 +46,8 @@ if(isset($_POST['save'])){
 		SET logotypeImg = '$logotypeImg', logotypeUrl = '$logotypeUrl'
 		
 END;
+$showLogotypeUrl = $logotypeUrl;
+$showLogotypeImg = $logotypeImg;
 
 //Exekutiverar "verkställer" UPDATE-satsen
 	$res = $mysqli->query($query) or die("Failed");
@@ -68,31 +68,76 @@ END;
 
 <div class="content">
 <?php
-$showColor = $color; //ska sättas till antingen red/green/blue/lightgray via formuläret
-$colorred = "##E90649";
-$colorgreen = "#87D300";
-$colorblue = "#78C7EB";
-$colorlightgray = "#BDB8B1";
-if ($session =="Background"){
-	?>
 
+if ($session =="Background"){
+
+	?>
+	<?php 
+$query = <<<END
+SELECT *
+FROM Appearance;
+END;
+
+
+
+//Exekutiverar "verkställer" SELECT-satsen
+$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
+" : " . $mysqli->error); //Performs query
+
+//Loopar igenom alla attribut i tabellen och lägger in de i variabler
+while($row = $res->fetch_object()) { 
+$background = ($row->background);
+
+}
+$showBackground = $background;
+
+//När användaren trycker på "spara"-knappen uppdateras och sparas välkomsttexten, reglerna och mailen i respektive tabeller/fält som ligger i formuläret
+if(isset($_POST['save'])){
+
+//Här börjar satsen som sparar bakgrundsfärgen
+ 	if(isset($_POST['background'])){
+
+//Sparar det som står i formuläret i variabler
+	$background = isset($_POST['background']) ? $_POST['background'] : '' ;  
+	
+
+//Här uppdateras tabellen med allt som är skrivet i formuläret
+		$query =<<<END
+		UPDATE Appearance
+		SET background = '$background'
+		
+END;
+$showBackground = $background;
+echo $background;
+echo " ";
+echo $showBackground;
+//Exekutiverar "verkställer" UPDATE-satsen
+	$res = $mysqli->query($query) or die("Failed");
+	$feedback = "Sparat";
+	}
+
+}?>
 	<h1>Bakgrund</h1>
 
-	<form method="post" action="upload_background.php" enctype="multipart/form-data" target="leiframe">
-	<!-- <input type="field" for ="color" name="Röd" value="Röd">  ifall man ska kunna skriva in själv, fungerar inte just nu dock -->
-	<input type="Submit" name="Grön" value="Gröne">
-	<input type="Submit" name="Grön" value="Grön">
-	<input type="Button" name="Blå" value="Blå">
-	<input type="Button" name="Ljusgrå" value="Ljusgrå">
+<p> Ange en sex-siffrig Hex-kod för att ange sidans bakgrundsfärg<br>
+	t.ex. "FFFFFF" (utan citattecken) för svart, ""f7e859" för gult och "#bae860" för grönt!</p>
+	<form action="appearanceAdmin.php?p=Background" method="post">
+			<label class="field" for ="background">Välj Bakgrundsfärg:</label>
+			<textarea id="background" name="background"><?php echo $showBackground ?></textarea><br>
+			<button name="reset">Rensa </button>
+			<button name="regret">Ångra </button>
+			<button name="save">Spara </button>  &nbsp; &nbsp; &nbsp; <?php echo $feedback ?>
+		</form>
 </form>
+
 	
-<iframe name="leiframe" width="341,5" height="192" style="background-color:<?php echo $colorred ?>"></iframe>
+<iframe name="leiframe" width="341,5" height="192" style="background-color:#<?php echo $background ?>"></iframe>
 	<?php
 }
 ?>
 <?php
 
-//Visar vilken sektion man är på, detta fall i välkomsttext-sektionen
+//Visar vilken sektion man är på, detta fall i logotyp-sektionen
 
 if($session=="Logotype"){
 $arrow="arrow-right";
@@ -100,66 +145,16 @@ $arrow="arrow-right";
 //Skriver in den texten som finns i tabellen från databasen och lägger in i en variabel som skall visa texten i formuläret
 $showLogotypeUrl = $logotypeUrl;
 $showLogotypeImg = $logotypeImg;
-
-//När användaren trycker på knappen "rensa" tas allt i formuläret bort med denna sats
-	if(isset($_POST['reset'])){
-	$background=$empty;
-	
-}
-
-//Om användaren ångrar att han raderade all text ångras rensningen
-	if(isset($_POST['regret'])){
-	$showBackground=$background;
-	
-}
-
-
 ?>
 
 <h1>Logotyp</h1>
-
 
 <form method="post" action="upload_logotype.php" enctype="multipart/form-data" target="leiframe">
       <label>Välj en bild som är din logotyp</label><br>
       <input type="file" name="logotype"/>
       <input type="submit" value="Ladda upp"/>
     </form>
-    <iframe name="leiframe" width="700" height="300"></iframe>
-
-
-
-
-
-
-
-
-
-
-
-
-	<!--
-
-			<label class="file" for ="logotypeImg">Logotypsbild:</label>
-			
-		 <textarea class="field text" id="logotypeImg" name="logotypeImg"><?php echo $showLogotypeImg ?></textarea><br>
-			<label for="file">Välj en fil att ladda upp:</label>
-			<input type="file" name="logotypeImg" id="logotypeImg"><br> Nuvarande Logotyp: <?php echo $showLogotypeImg ?>
-			<label class="field" for ="logotypeUrl">Logotyp-Url</label>
-			<input class="field title" type="text" id="logotypeUrl" name="logotypeUrl" value="<?php echo $showLogotypeUrl ?>" /><br>
-			<button name="reset">Rensa </button>
-			<button name="regret">Ångra </button>
-			<button name="save">Spara </button>  &nbsp; &nbsp; &nbsp; <?php echo $feedback ?>
-		</form>
-
-
-<?php 
-
-}
+    <iframe name="leiframe" width="300" height="200"></iframe>
+<?php }
+include("includes/footerAdmin.php");  
 ?>
-
-
-</div>
-
-
-<?php include("includes/footerAdmin.php"); 
-
