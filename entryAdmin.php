@@ -8,12 +8,15 @@ include("includes/db.php");
 $query = <<<END
 SELECT *
 FROM Entry;
+
 END;
 
 
 //Exekutiverar "verkställer" SELECT-satsen
 $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
 " : " . $mysqli->error); //Performs query
+
+
 
 //Loopar igenom alla attribut i tabellen och lägger in de i variabler
 
@@ -44,8 +47,8 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 								</div>
 								
 								<div class="entryBtn">
-									<input type="image" src="images/godkannBtn.png"/>
-									<input type="image" src="images/tabortBtn.png">
+									<input type="image" name="approve" src="images/godkannBtn.png">
+									<input type="image" name="$delete" src="images/tabortBtn.png">
 								</div>
 						</div>
 
