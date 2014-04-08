@@ -6,6 +6,8 @@ include("includes/db.php");
 
 
 $session = isset($_GET['p']) ? $_GET['p'] : 'product' ;
+$productId = 1;
+$feedback="";
 
 ?>
 
@@ -26,31 +28,50 @@ $session = isset($_GET['p']) ? $_GET['p'] : 'product' ;
 if($session=="product"){
 	$arrow="arrow-right"; 
 
- ?>
+
+if(isset($_POST['uploadButton1'])){
+
+	$imageName 	= $_FILES['productImage']['name'];
+	$imageType	= strtolower(end(explode('.', $imageName)));
+	$imageScr = 'images/product/productImage.' . $imageType;
+	move_uploaded_file($_FILES['productImage']['tmp_name'], $imageScr);
+	
+
+
+}
+
+
+ if(isset($_POST['save'])){
+
+ 		$query =<<<END
+		UPDATE Product
+		SET productImg = $imageScr
+		WHERE productId = $productId
+END;
+
+//Exekutiverar "verkställer" UPDATE-satsen
+	$res = $mysqli->query($query) or die("Failed");
+	$feedback = "Sparat";
+	
+ } ?>
 
 		<div class="h1Admin">Produkt</div>
+		Välj en bild som skall representera produkten som skall designas. <br>
+		Bilden får endast vara formatet .png eller .gif. <br>
+		Bilden skall vara transparant innanför konturerna och ha ett vitt lager utanför konturerna.<br>
+		Bilden kan även innehålla skuggor för att göra produkten effektfull. <br><br>
 
 
-
-<form method="post" action="upload_image.php" enctype="multipart/form-data" target="frame1">
-      <label>Välj en bild som är din produkt</label><br>
-      <input type="file" name="image"/>
-      <input type="submit" value="Ladda upp"/>
-    </form>
-    <iframe name="frame1" width="500" height="300"></iframe>
-
-
-<form method="post" action="upload_image.php" enctype="multipart/form-data" target="frame2">
-      <label>Välj en bild som skall vara skuggningen till produkten</label><br>
-      <input type="file" name="image"/>
-      <input type="submit" value="Ladda upp"/>
-    </form>
-    <iframe name="frame2" width="500" height="300"></iframe>
-
-			<button name="reset">Rensa </button>
-			<button name="regret">Ångra </button>
-			<button name="save">Spara </button> 
-<?php } 
+<form method="post" action="productAdmin.php" enctype="multipart/form-data">
+      <label>Välj bild </label>
+      <input type="file" name="productImage"/>
+      <input type="submit" name="uploadButton1" value="Ladda upp"/>
+     &nbsp;&nbsp; <button name="save">Spara </button>   &nbsp;&nbsp;<?php echo $feedback;?>
+    </form><br><br>
+ 
+<img style="width: 300px; height: 300px;" src=" <?php echo $imageScr?> ?v=<?php echo rand(0,1000) // rand() prevents the browser from displaying a previously cached image ?>"/>
+ 
+ <?php  } 
 
 if($session=="color"){
 	$arrow="arrow-right"; ?>
