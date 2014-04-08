@@ -13,48 +13,8 @@ $empty="";
 $arrow="";
 
 
-//Hämtar all data från tabellen "Logotype" ur databasen
-$query = <<<END
-SELECT *
-FROM Logotype;
-END;
 
-//Exekutiverar "verkställer" SELECT-satsen
-$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
-" : " . $mysqli->error); //Performs query
-
-//Loopar igenom alla attribut i tabellen och lägger in de i variabler
-while($row = $res->fetch_object()) { 
-$logotypeUrl = ($row->logotypeUrl); 
-$logotypeImg = ($row->logotypeImg); 
-}
-
-
-//När användaren trycker på "spara"-knappen uppdateras och sparas välkomsttexten, reglerna och mailen i respektive tabeller/fält som ligger i formuläret
-if(isset($_POST['save'])){
-
-//Här börjar satsen som sparar välkomsttexten
- 	if(isset($_POST['logotypeImg']) && isset($_POST['logotypeUrl']) ){
-
-//Sparar det som står i formuläret i variabler
-	$logotypeImg = isset($_POST['logotypeImg']) ? $_POST['logotypeImg'] : '' ;  
-	$logotypeUrl = isset($_POST['logotypeUrl']) ? $_POST['logotypeUrl'] : '' ; 
-
-//Här uppdateras tabellen med allt som är skrivet i formuläret
-		$query =<<<END
-		UPDATE Logotype
-		SET logotypeImg = '$logotypeImg', logotypeUrl = '$logotypeUrl'
-		
-END;
-$showLogotypeUrl = $logotypeUrl;
-$showLogotypeImg = $logotypeImg;
-
-//Exekutiverar "verkställer" UPDATE-satsen
-	$res = $mysqli->query($query) or die("Failed");
-	$feedback = "Sparat";
-	}
-
-}?>
+?>
 <!--Menyn på vänser sida-->
 <div class="leftNav">								<!--class="<?php if($currentPage=="index")echo $class="active" ?>-->
 
@@ -108,9 +68,7 @@ if(isset($_POST['save'])){
 		
 END;
 $showBackground = $background;
-echo $background;
-echo " ";
-echo $showBackground;
+
 //Exekutiverar "verkställer" UPDATE-satsen
 	$res = $mysqli->query($query) or die("Failed");
 	$feedback = "Sparat";
@@ -124,8 +82,8 @@ echo $showBackground;
 	<form action="appearanceAdmin.php?p=Background" method="post">
 			<label class="field" for ="background">Välj Bakgrundsfärg:</label>
 			<textarea id="background" name="background"><?php echo $showBackground ?></textarea><br>
-			<button name="reset">Rensa </button>
-			<button name="regret">Ångra </button>
+			<!--<button name="reset">Rensa </button>
+			<button name="regret">Ångra </button>-->
 			<button name="save">Spara </button>  &nbsp; &nbsp; &nbsp; <?php echo $feedback ?>
 		</form>
 </form>
@@ -141,20 +99,75 @@ echo $showBackground;
 
 if($session=="Logotype"){
 $arrow="arrow-right";
-
-//Skriver in den texten som finns i tabellen från databasen och lägger in i en variabel som skall visa texten i formuläret
-$showLogotypeUrl = $logotypeUrl;
-$showLogotypeImg = $logotypeImg;
 ?>
-
 <h1>Logotyp</h1>
 
-<form method="post" action="upload_logotype.php" enctype="multipart/form-data" target="leiframe">
+<form method="post" action="" enctype="multipart/form-data" target="leiframe">
       <label>Välj en bild som är din logotyp</label><br>
-      <input type="file" name="logotype"/>
-      <input type="submit" value="Ladda upp"/>
+      <input type="file" name="logotypeImg"/>
+    <br>
+    <iframe name="leiframe" width="300" height="200"><img src ="images/logotyp/logotyp.jpg"></iframe>
+    	<label>Välj LogotypsUrl</label><br>
+    	<input type='field' name="logotypeUrl"/>
+    	<button name="save1">Spara</button>
     </form>
-    <iframe name="leiframe" width="300" height="200"></iframe>
-<?php }
+<?php
+
+
+$query = <<<END
+SELECT * FROM Logotype;
+END;
+
+$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
+" : " . $mysqli->error); //Performs query
+
+while($row = $res->fetch_object()) {
+	$logotypeImg = ($row->logotypeImg);
+	$logotypeUrl = ($row->logotypeUrl);
+	$logotypeId = ($row->logotypeId);
+
+}
+$showlogotypeImg = $logotypeImg;
+$showlogotypeUrl = $logotypeUrl;
+
+//echo $showlogotypeImg;
+echo $showlogotypeUrl;
+//Användaren trycker på spara1
+if(isset($_POST['save1'])){
+
+	if(!empty($_POST)){
+
+//Här börjar satsen som sparar välkomsttexten
+ //if(isset($_POST['logotypeImg']) && isset($_POST['LogotypeUrl']) ){
+
+//Sparar det som står i formuläret i variabler
+	$logotypeImg = $_FILES['logotypeImg']; 
+
+	$file_name = $_FILES['logotypeImg']['name'];
+
+
+
+	$logotypeUrl = $_POST['logotypeUrl'];
+
+
+	
+
+
+//Här uppdateras tabellen med allt som är skrivet i formuläret
+		$query =<<<END
+		UPDATE Logotype
+		SET logotypeUrl = '$logotypeUrl', logotypeImg = '$logotypeImg';
+		
+END;
+
+
+$res = $mysqli->query($query) or die("Failed");
+$feedback = "Sparat";
+}
+	//}
+?>
+
+
+<?php }}
 include("includes/footerAdmin.php");  
 ?>
