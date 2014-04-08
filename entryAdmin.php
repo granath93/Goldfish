@@ -5,16 +5,25 @@ $currentPage="entry";
 include("includes/headAdmin.php"); 
 include("includes/db.php");
 
-$query = <<<END
-SELECT *
-FROM Entry;
+/*$query = 'SELECT *
+FROM Entry
+ORDER BY timeStamp
+';*/
 
-END;
+$query = 'SELECT Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity, COUNT(EntryVoter.entryId) as votes
+FROM Entry 
+INNER JOIN Designer 
+ON Entry.designerId=Designer.designerId
+INNER JOIN EntryVoter
+ON EntryVoter.entryId = Entry.entryId';
 
 
 //Exekutiverar "verkställer" SELECT-satsen
 $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
-" : " . $mysqli->error); //Performs query
+" : " . $mysqli->error); 
+
+
+//Performs query
 
 
 
@@ -41,9 +50,9 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 								
 								<div class="entryText">
 									<h2><?php echo $row->entryName ?></h2> 
-									<p>Skapare</p> <br/>
-									<p>Ort</p> <br/>
-									<p>Röster</p>
+									<p><?php echo $row->designerName ?></p> <br/>
+									<p><?php echo $row->designerCity ?></p> <br/>
+									<p><?php echo $row->votes ?></p>
 								</div>
 								
 								<div class="entryBtn">
