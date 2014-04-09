@@ -28,6 +28,19 @@ $feedback="";
 if($session=="product"){
 	$arrow="arrow-right"; 
 
+				$query =<<<END
+				SELECT * FROM Product
+				WHERE productId = {$productId}		
+END;
+
+		//Exekutiverar "verkställer" UPDATE-satsen
+			$res = $mysqli->query($query) or die("Failed");
+			
+			while($row = $res->fetch_object()){
+			$image = $row->productImg;
+		}
+
+
 
 if(isset($_POST['uploadButton1'])){
 
@@ -35,7 +48,6 @@ if(isset($_POST['uploadButton1'])){
 	$imageType	= strtolower(end(explode('.', $imageName)));
 	$imageScr = 'images/product/productImage.' . $imageType;
 	move_uploaded_file($_FILES['productImage']['tmp_name'], $imageScr);
-	
 
 
 }
@@ -66,23 +78,38 @@ END;
       <label>Välj bild </label>
       <input type="file" name="productImage"/>
       <input type="submit" name="uploadButton1" value="Ladda upp"/>
-     &nbsp;&nbsp; <button name="save">Spara </button>   &nbsp;&nbsp;<?php echo $feedback;?>
+     &nbsp;&nbsp; <button name="save">Spara </button>   &nbsp;&nbsp; <?php echo $feedback;?>
     </form><br><br>
  
-<img style="width: 300px; height: 300px;" src=" <?php echo $imageScr?> ?v=<?php echo rand(0,1000) // rand() prevents the browser from displaying a previously cached image ?>"/>
- 
+<img style="width: 300px; height: 300px;" src=" <?php echo $image;?>"/>
+
  <?php  } 
 
 if($session=="color"){
-	$arrow="arrow-right"; ?>
+	$arrow="arrow-right"; 
+
+if(isset($_POST['buttonYes_x'])){
+	
+}
+
+if(isset($_POST['buttonNo_x'])){
+	
+}
+
+	?>
 
 	<div class="h1Admin">Färgval</div>
 		Tillåts färgval för att designa produkten?
 
-		
-		<br><br><img src="images/godkannBtn.png" class="button"> <p>Ja</p>
-		<br><img src="images/tabortBtn.png" class="button"> <p>Nej</p>
+		<form method="post" action="productAdmin.php?p=color" enctype="multipart/form-data">
+		<br><br><input type="image" src="images/godkannBtn.png" class="button" name="buttonYes"></input> <p>Ja</p>
+		<br><input type="image" src="images/tabortBtn.png" class="button" name="buttonNo"></input> <p>Nej</p>
 
+		</form>
+		<!--<img src="images/godkannBtn.png" class="button" name="buttonYes" id="change1" onClick="checked(1)"> 
+		<img src="images/tabortBtn.png" class="button" name="buttonNo" id="change2" onClick="checked(2)"> -->
+		
+		
 <?php } 
 
 if($session=="image"){
@@ -92,8 +119,11 @@ if($session=="image"){
 		Tillåts uppladdning av bild för att designa produkten?
 
 
-		<br><br><img src="images/godkannBtn.png" class="button"> <p>Ja</p>
-		<br><img src="images/tabortBtn.png" class="button"> <p>Nej</p>
+		<form method="post" action="productAdmin.php?p=image" enctype="multipart/form-data">
+		<br><br><input type="image" src="images/godkannBtn.png" class="button" name="buttonYes"></input> <p>Ja</p>
+		<br><input type="image" src="images/tabortBtn.png" class="button" name="buttonNo"></input> <p>Nej</p>
+
+		</form>
 
 <?php } ?>
 
