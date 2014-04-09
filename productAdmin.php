@@ -30,7 +30,7 @@ if($session=="product"){
 
 				$query =<<<END
 				SELECT * FROM Product
-				WHERE productId = {$productId}		
+				WHERE productId = $productId		
 END;
 
 		//Exekutiverar "verkställer" UPDATE-satsen
@@ -42,7 +42,7 @@ END;
 
 
 
-if(isset($_POST['uploadButton1'])){
+if(isset($_POST['uploadButton'])){
 
 	$imageName 	= $_FILES['productImage']['name'];
 	$imageType	= strtolower(end(explode('.', $imageName)));
@@ -50,21 +50,19 @@ if(isset($_POST['uploadButton1'])){
 	move_uploaded_file($_FILES['productImage']['tmp_name'], $imageScr);
 
 
-}
-
-
  if(isset($_POST['save'])){
 
  		$query =<<<END
 		UPDATE Product
-		SET productImg = $imageScr
+		SET productImg = {$imageScr}
 		WHERE productId = $productId
 END;
 
 //Exekutiverar "verkställer" UPDATE-satsen
 	$res = $mysqli->query($query) or die("Failed");
 	$feedback = "Sparat";
-	
+
+ }
  } ?>
 
 		<div class="h1Admin">Produkt</div>
@@ -77,7 +75,7 @@ END;
 <form method="post" action="productAdmin.php" enctype="multipart/form-data">
       <label>Välj bild </label>
       <input type="file" name="productImage"/>
-      <input type="submit" name="uploadButton1" value="Ladda upp"/>
+      <input type="submit" name="uploadButton" value="Ladda upp"/>
      &nbsp;&nbsp; <button name="save">Spara </button>   &nbsp;&nbsp; <?php echo $feedback;?>
     </form><br><br>
  

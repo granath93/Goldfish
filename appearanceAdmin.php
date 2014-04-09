@@ -99,75 +99,89 @@ $showBackground = $background;
 
 if($session=="Logotype"){
 $arrow="arrow-right";
+$logotypeId=1;
+
+				$query =<<<END
+				SELECT * FROM Logotype
+				WHERE logotypeId = $logotypeId		
+END;
+
+		//Exekutiverar "verkställer" UPDATE-satsen
+			$res = $mysqli->query($query) or die("Failed");
+			
+			while($row = $res->fetch_object()){
+			$logotype = $row->logotypeImg;
+			$logotypeUrl = ($row->logotypeUrl);
+			$logotypeId = ($row->logotypeId);
+			
+			}	
+
+
+//När användaren väljer att ladda upp bilden på logotypen sker detta
+if(isset($_POST['uploadButton'])){
+
+	$logotypeName 	= $_FILES['logotypeImg']['name']; //sparar hela namnet på logotypen som användaren laddar upp
+	$logotypeType	= strtolower(end(explode('.', $logotypeName))); //sparar logotypens format
+	$logotypeScr = 'images/logotype/logotypeImage.' . $logotypeType; //skapar hela URLen till bilden i bildmappen
+	move_uploaded_file($_FILES['logotypeImg']['tmp_name'], $logotypeScr); //sparar logotypen i bildmappen
+
+//När användaren trycker på "spara", sparas logotypen i databasen med en "UPDATE"-sats	
+ if(isset($_POST['saveLogotype'])){
+
+ 		$query =<<<END
+		UPDATE Logotype
+		SET logotypeImg = {$logotypeScr}
+		WHERE logotypeId = $logotypeId
+END;
+
+//Exekutiverar "verkställer" UPDATE-satsen
+	$res = $mysqli->query($query) or die("Failed");
+	$feedback = "Sparat";
+
+ }
+}
+
 ?>
 <h1>Logotyp</h1>
 
-<form method="post" action="" enctype="multipart/form-data" target="leiframe">
-      <label>Välj en bild som är din logotyp</label><br>
+
+<!-- Formuläret där användaren laddar upp logotypen från egen dator -->
+<form method="post" action="appearanceAdmin.php?p=Logotype" enctype="multipart/form-data">
+      <label>Välj en bild som är din logotyp </label>
       <input type="file" name="logotypeImg"/>
-    <br>
-    <iframe name="leiframe" width="300" height="200"><img src ="images/logotyp/logotyp.jpg"></iframe>
+      <input type="submit" name="uploadButton" value="Ladda upp"/>
+   &nbsp;&nbsp;  <button name="saveLogotype">Spara </button>   
+  <br><br>
+ 
+ <!-- Visar logotypen med hjälp av hela url-en som tidigare sparats i variabeln "$logotype"-->
+<img style="width: 300px; height: 300px;" src=" <?php echo $logotype;?>"/><br><br>
+
+
+<!-- Formuläret där användaren sparar en URL kopplat till logotypen -->
     	<label>Välj LogotypsUrl</label><br>
     	<input type='field' name="logotypeUrl"/>
-    	<button name="save1">Spara</button>
+    	<button name="saveUrl">Spara</button>
     </form>
 <?php
+//Skriver ut URL-en användaren har matat in
+echo $logotypeUrl;
 
-
-$query = <<<END
-SELECT * FROM Logotype;
-END;
-
-$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
-" : " . $mysqli->error); //Performs query
-
-while($row = $res->fetch_object()) {
-	$logotypeImg = ($row->logotypeImg);
-	$logotypeUrl = ($row->logotypeUrl);
-	$logotypeId = ($row->logotypeId);
-
-}
-$showlogotypeImg = $logotypeImg;
-$showlogotypeUrl = $logotypeUrl;
-
-//echo $showlogotypeImg;
-echo $showlogotypeUrl;
-//Användaren trycker på spara1
-if(isset($_POST['save1'])){
-
-	if(!empty($_POST)){
-
-//Här börjar satsen som sparar välkomsttexten
- //if(isset($_POST['logotypeImg']) && isset($_POST['LogotypeUrl']) ){
-
-//Sparar det som står i formuläret i variabler
-	$logotypeImg = $_FILES['logotypeImg']; 
-
-	$file_name = $_FILES['logotypeImg']['name'];
-
-
-
-	$logotypeUrl = $_POST['logotypeUrl'];
-
-
-	
-
+//Användaren trycker på "spara" för att spara URL-en till databasen med en "UPDATE"-sats 
+if(isset($_POST['saveUrl'])){
 
 //Här uppdateras tabellen med allt som är skrivet i formuläret
 		$query =<<<END
 		UPDATE Logotype
-		SET logotypeUrl = '$logotypeUrl', logotypeImg = '$logotypeImg';
+		SET logotypeUrl = '$logotypeUrl'
+		WHERE logotypeId = $logotypeId
 		
 END;
 
 
-$res = $mysqli->query($query) or die("Failed");
-$feedback = "Sparat";
+$res = $mysqli->query($query) or die("Failed");	
+
 }
-	//}
-?>
 
-
-<?php }}
+}
 include("includes/footerAdmin.php");  
 ?>
