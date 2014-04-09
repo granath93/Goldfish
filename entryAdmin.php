@@ -7,13 +7,14 @@ include("includes/db.php");
 
 
 
-$query = 'SELECT Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity, COUNT(*) as votes
+$query = 'SELECT Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity, COUNT(EntryVoter.entryId) as votes
 FROM Entry 
 INNER JOIN Designer 
 ON Entry.designerId=Designer.designerId
-INNER JOIN EntryVoter
+LEFT JOIN EntryVoter
 ON Entry.entryId=EntryVoter.entryId
-GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity';
+GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity
+ORDER BY Entry.timeStamp DESC';
 
 /*Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity, COUNT(EntryVoter.entryId) as votes
 FROM Entry 
