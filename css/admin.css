@@ -150,10 +150,11 @@ textarea.field.text{
 
 .entryBtn{
 
-	width:10%;
-	float:right;
-	margin-right: 20px;
-	margin-top: 5px;
+	width:30px;
+	height:60px;
+	float:left;
+	margin-left: 8px;
+	margin-bottom: 10px;
 	
 }
 .entryImg{
