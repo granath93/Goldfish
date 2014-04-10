@@ -12,7 +12,7 @@ $feedback="";
 $empty="";
 $arrow="";
 
-
+$mysqli->set_charset("utf8");
 
 ?>
 <!--Menyn på vänser sida-->
