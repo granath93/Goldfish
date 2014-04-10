@@ -171,16 +171,16 @@ textarea.field.text{
 	display:inline; 
 	margin:0;
 }
-.entryText h3{
+.votes{
 	color:red;
-	font-size: 20px;
 }
 
 .entryWrapper{
-	outline:grey dotted 1px;
+	outline:grey solid 1px;
 	width:150px;
 	float:left;
 	margin: 20px;
+	padding: 5px;
 	
 }
 
@@ -198,6 +198,7 @@ textarea.field.text{
 .imgStyle{
 	width:100%;
 	height:150px;
+	outline: grey solid 1px; 
 	
 }
 

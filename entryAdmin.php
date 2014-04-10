@@ -16,17 +16,17 @@ ON Entry.entryId=EntryVoter.entryId
 GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity
 ORDER BY Entry.timeStamp DESC';
 
-/*Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity, COUNT(EntryVoter.entryId) as votes
-FROM Entry 
-INNER JOIN Designer 
-ON Entry.designerId=Designer.designerId
-INNER JOIN EntryVoter
-WHERE Entry.entryId= 1';*/
-
 
 //Exekutiverar "verkställer" SELECT-satsen
 $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
 " : " . $mysqli->error);
+
+/*if(isset($_POST['approve'])){
+
+}
+if(isset($_POST['delete'])){
+	
+}*/
   
 
 ?>
@@ -37,7 +37,8 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 			
 				<?php 
 
-					while($row = $res->fetch_object()) :  ?>
+					while($row = $res->fetch_object()) :  
+						/*$entryId = ($row->entryId);*/?>
 						
 						<div class="entryWrapper">
 							<div class="entryImg">
@@ -49,12 +50,14 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 								<p><?php echo $row->designerName ?></p> <br/>
 								<p><?php echo $row->designerCity ?></p> <br/>
 								<p>Antal röster:</p>
-								<h3><?php echo $row->votes ?></h3>
+								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
 							</div>
 								
 							<div class="entryBtn">
-								<input type="image" name="approve" src="images/godkannBtn.png">
-								<input type="image" name="delete" src="images/tabortBtn.png">
+								<form method="post" action="entryAdmin.php" enctype="multipart/form-data">
+									<input type="image" name="approve" src="images/godkannBtn.png">
+									<!--<a href="deleteEntry.php?entryId=<?php $entryId ?>">--><input type="image" name="delete" src="images/tabortBtn.png"><!--</a>-->
+								</form>
 							</div>
 						</div>
 

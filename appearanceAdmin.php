@@ -78,7 +78,7 @@ $showBackground = $background;
 	<h1>Bakgrund</h1>
 
 <p> Ange en sex-siffrig Hex-kod för att ange sidans bakgrundsfärg<br>
-	t.ex. "FFFFFF" (utan citattecken) för svart, ""f7e859" för gult och "#bae860" för grönt!</p>
+	t.ex. "FFFFFF" (utan citattecken) för svart, "f7e859" för gult och "bae860" för grönt!</p>
 	<form action="appearanceAdmin.php?p=Background" method="post">
 			<label class="field" for ="background">Välj Bakgrundsfärg:</label>
 			<textarea id="background" name="background"><?php echo $showBackground ?></textarea><br>
