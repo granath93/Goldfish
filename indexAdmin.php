@@ -16,12 +16,17 @@ $res = $mysqli->query('SELECT * FROM Entry') or die("Could not query database" .
 
 //Loopar igenom alla bidrag i tabellen Entry 
 while($row = $res->fetch_object()) { 
-	$date = strtotime($row->timeStamp); //sparar alla datum i variabeln $datum
+	$date = strtotime($row->timeStamp); //sparar alla datum i variabeln $date
 	$date = date("d m Y", $date); //ordnar alla datum i dag, månad, år
 	$now= time(); //skapar en variabel $now som tar in dagens datum och tid
 	$now=date("d m Y", $now); //gör om dagens datum till dag, månad, år
 	$today=date("D"); //sparar dagens veckodag 
-	$firstDayOfMonth= date('1 m Y', strtotime('this month')); //skapar en variabel med veckans första datum
+	$firstDayOfMonth= date('01 m Y', strtotime('this month')); //skapar en variabel med veckans första datum
+	$lastMonth = date('01 m Y', strtotime('last month'));
+
+//echo $date . "<br>" . $weekEntry .  "<br>" ; 
+//echo  $monthEntry .  "<br>" ;
+//echo "<br>";
 
 	//om det är en måndag idag används dagens måndagsdatum
 	if($today=="Mon"){
@@ -42,12 +47,14 @@ while($row = $res->fetch_object()) {
 
 		//Om bidragets datum är den samma eller större än veckans första dag räknas variabeln upp med +1
 		if($date >= $firstDayOfWeek){
-			$weekEntry ++; 	
+			$weekEntry ++; 
+				
 		}
 
 		//Om bidragets datum är den samma eller större än månadens första dag räknas variabeln upp med +1
-		if($date >= $firstDayOfMonth){
+		if($date >= $firstDayOfMonth && $date !== $lastMonth){
 			$monthEntry ++; 
+
 		}
 }
 

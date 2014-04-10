@@ -87,11 +87,11 @@ if($session=="color"){
 	$arrow="arrow-right"; 
 
 if(isset($_POST['buttonYes_x'])){
-	
+	echo 'jaaa';
 }
 
 if(isset($_POST['buttonNo_x'])){
-	
+	echo 'noo';
 }
 
 	?>
