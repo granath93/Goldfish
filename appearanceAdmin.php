@@ -8,6 +8,7 @@ include("includes/headAdmin.php");
 
 //Sparar det som finns i alla fält i formuläten och sparar de i variabler
 $session = isset($_GET['p']) ? $_GET['p'] : 'Background' ; 
+$feedback="";
 $feedbackLogotype="";
 $feedbackUrl="";
 $empty="";
