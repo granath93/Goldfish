@@ -1,6 +1,6 @@
 <?php
-$pageTitle="Bakgrund"; //Skriver in vad som skall stå i "webb-browser-fliken"
-$currentPage = "Background"; //Lägger in värde så man vet vilken sida administratören är på
+$pageTitle="Utseende"; //Skriver in vad som skall stå i "webb-browser-fliken"
+$currentPage = "appearance"; //Lägger in värde så man vet vilken sida administratören är på
 
 //Lägger till filer som behöver vara med på sidan så att sidan skall fungera rätt
 include("includes/db.php"); 
@@ -8,7 +8,8 @@ include("includes/headAdmin.php");
 
 //Sparar det som finns i alla fält i formuläten och sparar de i variabler
 $session = isset($_GET['p']) ? $_GET['p'] : 'Background' ; 
-$feedback="";
+$feedbackLogotype="";
+$feedbackUrl="";
 $empty="";
 $arrow="";
 
@@ -72,6 +73,7 @@ $showBackground = $background;
 //Exekutiverar "verkställer" UPDATE-satsen
 	$res = $mysqli->query($query) or die("Failed");
 	$feedback = "Sparat";
+
 	}
 
 }?>
@@ -113,7 +115,8 @@ END;
 			$logotype = ($row->logotypeImg);
 			$logotypeUrl = ($row->logotypeUrl);
 			$logotypeId = ($row->logotypeId);
-			
+
+					
 			}	
 
 
@@ -124,26 +127,42 @@ if(isset($_POST['uploadButton'])){
 	$logotypeType	= strtolower(end(explode('.', $logotypeName))); //sparar logotypens format
 	$logotypeScr = 'images/logotype/logotypeImage.' . $logotypeType; //skapar hela URLen till bilden i bildmappen
 	move_uploaded_file($_FILES['logotypeImg']['tmp_name'], $logotypeScr); //sparar logotypen i bildmappen
+	
 
-//När användaren trycker på "spara", sparas logotypen i databasen med en "UPDATE"-sats	
-if(isset($_POST['save'])){
-
- 		$query =<<<END
+$query =<<<END
 		UPDATE Logotype
-		SET productImg = {$logotypeScr}
-		WHERE logotypeId = $logotypeId
+		SET logotypeImg = '$logotypeScr'
+		WHERE logotypeId = '$logotypeId'
+END;
+	$res = $mysqli->query($query) or die("Failed");
+
+	$logotype = $logotypeScr;
+//När användaren trycker på "spara", sparas logotypen i databasen med en "UPDATE"-sats	
+}	
+
+if(isset($_POST['saveImg'])){
+ $feedbackLogotype="Sparat";
+ 
+ }
+
+
+if(isset($_POST['saveUrl'])){
+$feedbackUrl ="sparat";
+
+$logotypeUrl =  isset($_POST['logotypeUrl']) ? $_POST['logotypeUrl'] : '' ;  
+
+//Här uppdateras tabellen med allt som är skrivet i formuläret
+		$query =<<<END
+		UPDATE Logotype
+		SET logotypeUrl = '$logotypeUrl'
+		
+		
 END;
 
-//Exekutiverar "verkställer" UPDATE-satsen
-	$res = $mysqli->query($query) or die("Failed");
-	$feedback = "Sparat";
 
-echo $logotypeScr . "<br>";
-echo $logotypeType;
+$res = $mysqli->query($query) or die("Failed");	
 
- }
- }
-
+}
 
 ?>
 <h1>Logotyp</h1>
@@ -154,37 +173,26 @@ echo $logotypeType;
       <label>Välj en bild som är din logotyp </label>
       <input type="file" name="logotypeImg"/>
       <input type="submit" name="uploadButton" value="Ladda upp"/>
-   &nbsp;&nbsp;  <button type="submit" name="save">Spara </button>    </form> 
+   &nbsp;&nbsp;  <button name="saveImg">Spara </button>    &nbsp;&nbsp;  <?php echo $feedbackLogotype; ?> 
+   </form>  
   <br><br>
  
  <!-- Visar logotypen med hjälp av hela url-en som tidigare sparats i variabeln "$logotype"-->
-<img style="width: 300px; height: 300px;" src=" <?php echo $logotype;?>"/><br><br>
+<img style="width: 300px;" src=" <?php echo $logotype;?>"/><br><br><br><br>
+
 
 <form method="post" action="appearanceAdmin.php?p=Logotype" enctype="multipart/form-data">
 <!-- Formuläret där användaren sparar en URL kopplat till logotypen -->
-    	<label>Välj LogotypsUrl</label><br>
+    	<label>Skriv in en URL som din logotyp skall länka till på själva webbsidan</label><br><br>
     	<input type='field' name="logotypeUrl"/>
-    	<button name="saveUrl">Spara</button>
+    	<button name="saveUrl">Spara</button>   &nbsp;&nbsp;  <?php echo $feedbackUrl; ?>
     </form>
 <?php
 //Skriver ut URL-en användaren har matat in
-echo $logotypeUrl;
+echo "Din URL-länk är nu: ". $logotypeUrl;
 
 //Användaren trycker på "spara" för att spara URL-en till databasen med en "UPDATE"-sats 
-if(isset($_POST['saveUrl'])){
 
-//Här uppdateras tabellen med allt som är skrivet i formuläret
-		$query =<<<END
-		UPDATE Logotype
-		SET logotypeUrl = '$logotypeUrl'
-		WHERE logotypeId = $logotypeId
-		
-END;
-
-
-$res = $mysqli->query($query) or die("Failed");	
-
-}
 
 }
 include("includes/footerAdmin.php");  

@@ -49,34 +49,37 @@ if(isset($_POST['uploadButton'])){
 	$imageScr = 'images/product/productImage.' . $imageType;
 	move_uploaded_file($_FILES['productImage']['tmp_name'], $imageScr);
 
-
- if(isset($_POST['save'])){
-
- 		$query =<<<END
+		$query =<<<END
 		UPDATE Product
-		SET productImg = {$imageScr}
-		WHERE productId = $productId
+		SET productImg = '$imageScr'
+		WHERE productId = '$productId'
 END;
 
 //Exekutiverar "verkställer" UPDATE-satsen
 	$res = $mysqli->query($query) or die("Failed");
-	$feedback = "Sparat";
+	
+	$image = $imageScr;
+ }  
 
- }
- } ?>
+ if(isset($_POST['save'])){
+$feedback = "Sparat";
+ 
+
+ }?>
 
 		<div class="h1Admin">Produkt</div>
-		Välj en bild som skall representera produkten som skall designas. <br><br>
-		Bilden får endast vara formatet .png eller .gif. <br>
-		Bilden skall vara transparant innanför konturerna och ha ett vitt lager utanför konturerna.<br>
-		Bilden kan även innehålla skuggor för att göra produkten effektfull. <br><br>
-
+		Välj en bild som skall representera produkten som skall designas. <br>
+	<ul>
+	<li>	Bilden får endast vara formatet .png eller .gif. <br></li>
+	<li>	Bilden skall vara transparent innanför konturerna och ha ett vitt lager utanför konturerna.<br></li>
+	<li>	Bilden kan även innehålla skuggor för att göra produkten effektfull. <br><br></li>
+</ul>
 
 <form method="post" action="productAdmin.php" enctype="multipart/form-data">
       <label>Välj bild </label>
       <input type="file" name="productImage"/>
       <input type="submit" name="uploadButton" value="Ladda upp"/>
-     &nbsp;&nbsp; <button name="save">Spara </button>   &nbsp;&nbsp; <?php echo $feedback;?>
+     &nbsp;&nbsp; <button type="submit" id="save" name="save">Spara </button>   &nbsp;&nbsp; <?php echo $feedback;?>
     </form><br><br>
  
 <img style="width: 300px; height: 300px;" src=" <?php echo $image;?>"/>
