@@ -66,7 +66,7 @@ END;
  } ?>
 
 		<div class="h1Admin">Produkt</div>
-		Välj en bild som skall representera produkten som skall designas. <br>
+		Välj en bild som skall representera produkten som skall designas. <br><br>
 		Bilden får endast vara formatet .png eller .gif. <br>
 		Bilden skall vara transparant innanför konturerna och ha ett vitt lager utanför konturerna.<br>
 		Bilden kan även innehålla skuggor för att göra produkten effektfull. <br><br>
@@ -134,3 +134,4 @@ if($session=="image"){
 
 
 <?php include("includes/footerAdmin.php"); ?>
+

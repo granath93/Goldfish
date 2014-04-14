@@ -12,7 +12,7 @@ $feedback="";
 $empty="";
 $arrow="";
 
-$mysqli->set_charset("utf8");
+
 
 ?>
 <!--Menyn på vänser sida-->
@@ -110,7 +110,7 @@ END;
 			$res = $mysqli->query($query) or die("Failed");
 			
 			while($row = $res->fetch_object()){
-			$logotype = $row->logotypeImg;
+			$logotype = ($row->logotypeImg);
 			$logotypeUrl = ($row->logotypeUrl);
 			$logotypeId = ($row->logotypeId);
 			
@@ -126,11 +126,11 @@ if(isset($_POST['uploadButton'])){
 	move_uploaded_file($_FILES['logotypeImg']['tmp_name'], $logotypeScr); //sparar logotypen i bildmappen
 
 //När användaren trycker på "spara", sparas logotypen i databasen med en "UPDATE"-sats	
- if(isset($_POST['saveLogotype'])){
+if(isset($_POST['save'])){
 
  		$query =<<<END
 		UPDATE Logotype
-		SET logotypeImg = {$logotypeScr}
+		SET productImg = {$logotypeScr}
 		WHERE logotypeId = $logotypeId
 END;
 
@@ -138,8 +138,12 @@ END;
 	$res = $mysqli->query($query) or die("Failed");
 	$feedback = "Sparat";
 
+echo $logotypeScr . "<br>";
+echo $logotypeType;
+
  }
-}
+ }
+
 
 ?>
 <h1>Logotyp</h1>
@@ -150,13 +154,13 @@ END;
       <label>Välj en bild som är din logotyp </label>
       <input type="file" name="logotypeImg"/>
       <input type="submit" name="uploadButton" value="Ladda upp"/>
-   &nbsp;&nbsp;  <button name="saveLogotype">Spara </button>   
+   &nbsp;&nbsp;  <button type="submit" name="save">Spara </button>    </form> 
   <br><br>
  
  <!-- Visar logotypen med hjälp av hela url-en som tidigare sparats i variabeln "$logotype"-->
 <img style="width: 300px; height: 300px;" src=" <?php echo $logotype;?>"/><br><br>
 
-
+<form method="post" action="appearanceAdmin.php?p=Logotype" enctype="multipart/form-data">
 <!-- Formuläret där användaren sparar en URL kopplat till logotypen -->
     	<label>Välj LogotypsUrl</label><br>
     	<input type='field' name="logotypeUrl"/>
@@ -185,3 +189,4 @@ $res = $mysqli->query($query) or die("Failed");
 }
 include("includes/footerAdmin.php");  
 ?>
+
