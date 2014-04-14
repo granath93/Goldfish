@@ -14,7 +14,9 @@ ON Entry.designerId=Designer.designerId
 LEFT JOIN EntryVoter
 ON Entry.entryId=EntryVoter.entryId
 GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity
-ORDER BY Entry.timeStamp DESC';
+ORDER BY Entry.timeStamp ASC';
+
+
 
 
 //Exekutiverar "verkställer" SELECT-satsen
@@ -23,17 +25,20 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 
 /*if(isset($_POST['approve'])){
 
-}
-if(isset($_POST['delete'])){
-	
-}*/
-  
+} */
+
+
+
 
 ?>
 <div class="leftNav"></div>
 	<div class="content">
-		
-		
+	<form method="post" action="entryAdmin.php" enctype="multipart/form-data">
+	<select name="select">
+		<option name="senaste">senaste</option>
+		<option name="flest">flest röster</option>
+	</select>
+	</form>	
 			
 				<?php 
 
