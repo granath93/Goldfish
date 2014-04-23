@@ -59,13 +59,10 @@ END;
 	$res = $mysqli->query($query) or die("Failed");
 	
 	$image = $imageScr;
+	$feedback = "Sparat";
  }  
 
- if(isset($_POST['save'])){
-$feedback = "Sparat";
- 
-
- }?>
+?>
 
 		<div class="h1Admin">Produkt</div>
 		Välj en bild som skall representera produkten som skall designas. <br>
@@ -78,8 +75,8 @@ $feedback = "Sparat";
 <form method="post" action="productAdmin.php" enctype="multipart/form-data">
       <label>Välj bild </label>
       <input type="file" name="productImage"/>
-      <input type="submit" name="uploadButton" value="Ladda upp"/>
-     &nbsp;&nbsp; <button type="submit" id="save" name="save">Spara </button>   &nbsp;&nbsp; <?php echo $feedback;?>
+      <input type="submit" name="uploadButton" value="Ladda upp och spara"/>
+     &nbsp;&nbsp; <?php echo $feedback;?>
     </form><br><br>
  
 <img style="width: 300px; height: 300px;" src=" <?php echo $image;?>"/>

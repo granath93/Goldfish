@@ -37,6 +37,7 @@ nav .active{
 }
 
 #topNav {
+	display: fixed;
 	background-color: black;
 	height: 90px;
 	width: 100%;
