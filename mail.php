@@ -14,7 +14,7 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 
 	<div class="content">	
 
-	<div class="h1Admin">Alla deltagares email</div><a href="entryAdmin.php"><br><br><button>Tillbaka till bidragen </button></a><br>
+	<div class="h1Admin">Alla deltagarens email</div>
 	<hr>
 
 <?php
