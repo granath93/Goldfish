@@ -87,9 +87,10 @@ while($row = $res->fetch_object()) {
 								
 							<div class="entryText">
 								<h2><?php echo $row->entryName ?></h2> 
-								<p>Antal röster:</p>
-								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
 							</div>
+							<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
+							<div class="arrow-right"></div>
+							<p class="votes"><strong><?php echo $row->votes ?></strong></p>
 								
 						
 						</div>
