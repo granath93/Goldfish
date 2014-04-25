@@ -10,9 +10,17 @@
 include("includes/db.php");
 include("includes/headFront.php");
 $mysqli->set_charset("utf8");
+$entries = 'SELECT Entry.entryId, Entry.entryName, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
+	FROM Entry 
+	LEFT JOIN EntryVoter
+	ON Entry.entryId=EntryVoter.entryId
+	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
+	ORDER BY Entry.timeStamp ASC';
 
 //hämtar från tabellen text i databasen
 $res = $mysqli->query('SELECT * FROM Text, Logotype') or die("Could not query database" . $mysqli->errno . 
+" : " . $mysqli->error);
+$entriesRes = $mysqli->query($entries) or die("Could not query database" . $mysqli->errno . 
 " : " . $mysqli->error);
 
 
@@ -65,7 +73,29 @@ while($row = $res->fetch_object()) {
 
 
 		<div class="content" >
-			 Här kommer du se topplistan
+			 <h1> Här kommer du se topplistan </h1><br>
+			 <?php 
+
+					while($row = $entriesRes->fetch_object()) :  
+						
+						?>
+						
+						<div class="entryWrapper">
+							<div class="entryImg">
+								<img class="imgStyle" src="<?php echo $row->entryImage ?>">
+							</div>
+								
+							<div class="entryText">
+								<h2><?php echo $row->entryName ?></h2> 
+								<p>Antal röster:</p>
+								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
+							</div>
+								
+						
+						</div>
+
+
+					<?php endwhile; ?>
 		</div>
 
 
