@@ -54,24 +54,24 @@ while($row = $res->fetch_object()) {
 		</div>
 
 
-	<div id="design"></div>
+	
 	<img src="images/linje.png" >
 			
 
-
+<div id="design"></div>
 		<div class="content" >
 			
 			
-			Här designar du din egna tröja!
+			<h1>Här designar du din egna tröja!</h1>
 
 		</div>
 
 
-	<div id="toplist"></div>
+	
 	<img src="images/linje.png">
 
 
-
+<div id="toplist"></div>
 		<div class="content" >
 			 <h1> Här kommer du se topplistan </h1><br>
 			 <?php 
@@ -99,14 +99,14 @@ while($row = $res->fetch_object()) {
 		</div>
 
 
-	<div id="latest"></div>
+
 	<img src="images/linje.png" >
 
-
+	<div id="latest"></div>
 		<div class="content" >
 
 
-			De senaste bidragen
+			<h1>De senaste bidragen</h1>
 
 
 		</div>
@@ -115,10 +115,10 @@ while($row = $res->fetch_object()) {
 
 
 
-	<div id="rule"></div>
+
 	<img src="images/linje.png">
 
-
+	<div id="rule"></div>
 		<div class="content" >
 		
 			<h1><?php echo $ruleTitle;?></h1>
