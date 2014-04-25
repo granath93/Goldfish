@@ -35,9 +35,9 @@ function checked(x){
 
 
 
-$('body').scrollspy({ target: '.navbar-example' })
 
-
-$('[data-spy="scroll"]').each(function () {
-  var $spy = $(this).scrollspy('refresh')
-})
+   $(function(){
+    $('nav').on('click', 'a', function(){
+        $(this).addClass('arrow-up').siblings().removeClass('arrow-up');
+    });
+});

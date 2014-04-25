@@ -19,7 +19,7 @@ include("includes/db.php");
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <link rel="stylesheet" href="css/normalize.css" >
 <link rel="stylesheet" href="css/front.css" >
-<script src="#" charset="utf-8"></script>
+<script src="js/functions.js" charset="utf-8"></script>
 	<title>Front</title>
 </head>
 
@@ -29,7 +29,7 @@ include("includes/db.php");
 
 	<div class="topNav">
 		<nav>
-			<a class="" href="index.php"> Start </a>
+			<a class="" href="#start">  Start  </a>
 			<a class="" href="#design"> Designa </a>
 			<a class="" href="#toplist"> Topplista </a>
 			<a class="" href="#latest"> Senaste bidrag </a>
@@ -37,7 +37,7 @@ include("includes/db.php");
 		</nav>
 	</div>
 
-
+	<div id="start"></div>
 		<div class="container">
 
 
