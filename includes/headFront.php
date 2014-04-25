@@ -1,3 +1,16 @@
+<?php 
+include("includes/db.php");
+
+	$res = $mysqli->query('SELECT * FROM Appearance, Logotype') or die("Could not query database" . $mysqli->errno . 
+	" : " . $mysqli->error);
+
+	while($row = $res->fetch_object()) { 
+	$background = ($row->background);
+	$logga = ($row->logotypeImg);
+	
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +22,22 @@
 <script src="#" charset="utf-8"></script>
 	<title>Front</title>
 </head>
-<body>
 
-<div class="content">
+<body style="background-color:#<?php echo $background ?>">
+
+
+
+	<div class="topNav">
+		<nav>
+			<a class="" href="index.php"> Start </a>
+			<a class="" href="#design"> Designa </a>
+			<a class="" href="#toplist"> Topplista </a>
+			<a class="" href="#latest"> Senaste bidrag </a>
+			<a class="" href="#rule"> Regler </a>
+		</nav>
+	</div>
+
+
+		<div class="container">
+
+

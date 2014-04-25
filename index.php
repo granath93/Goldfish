@@ -12,56 +12,92 @@ include("includes/headFront.php");
 $mysqli->set_charset("utf8");
 
 //hämtar från tabellen text i databasen
-$textRes = $mysqli->query('SELECT * FROM Text') or die("Could not query database" . $mysqli->errno . 
+$res = $mysqli->query('SELECT * FROM Text, Logotype') or die("Could not query database" . $mysqli->errno . 
 " : " . $mysqli->error);
-$backRes = $mysqli->query('SELECT * FROM Appearance') or die("Could not query database" . $mysqli->errno . 
-" : " . $mysqli->error);
+
 
 //Vi kommer behöva göra någon slags JOIN eller UNION-sats för att få alla resultat i samma query, istället för flera olika. 
 //Jag och Dennis ska titta över det.
 
-while($row = $textRes->fetch_object()) { 
+while($row = $res->fetch_object()) { 
 	$welcomeTitle = ($row->welcomeTitle);
 	$welcomeText = ($row->welcomeText);
-
-
-	}
-	while($row = $backRes->fetch_object()) { 
-	$background = ($row->background);
-	
+	$ruleTitle = ($row->ruleTitle);
+	$ruleText = ($row->ruleText);
+	$logotype = ($row->logotypeImg);
+	$logotypeUrl = ($row->logotypeUrl);
 
 
 	}
 
 ?>
 
-<body style="background-color:#<?php echo $background ?>">
-	<div class="row">
-		<div id="topNav">
-		<nav>
-		<a class="" href="frontend.php"> Start </a>
-		<a class="" href="frontend.php"> Designa </a>
-		<a class="" href="frontend.php"> Topplista </a>
-		<a class="" href="frontend.php"> Senaste Bidrag </a>
-		<a class="" href="frontend.php"> Regler </a>
+	<div class="logotype">
+				<a href="<?php echo $logotypeUrl?>"><img src="<?php echo $logotype ?>"></a>
+			</div>
 	
-	</nav>
-	</div>
+		<div class="content" >
+					
+			<h1><?php echo $welcomeTitle;?></h1>
 
-	<div id="content">
-	<div class="row">
-	<div class="col-md-4">
-		<p>hej</p>
-	</div>
-		<div class="col-md-4">
-	
-		<?php echo $welcomeTitle;?>
-		<br>
-		<?php echo $welcomeText; ?>
-	</div>
-	</div>
-</div>
-</div>
+			<br>
 
-</body>
-</html>
+			<p><?php echo $welcomeText; ?></p>
+		</div>
+
+
+	<div id="design"></div>
+	<img src="images/linje.png" >
+			
+
+
+		<div class="content" >
+			
+			
+			Här designar du din egna tröja!
+
+		</div>
+
+
+	<div id="toplist"></div>
+	<img src="images/linje.png">
+
+
+
+		<div class="content" >
+			 Här kommer du se topplistan
+		</div>
+
+
+	<div id="latest"></div>
+	<img src="images/linje.png" >
+
+
+		<div class="content" >
+
+
+			De senaste bidragen
+
+
+		</div>
+
+
+
+
+
+	<div id="rule"></div>
+	<img src="images/linje.png">
+
+
+		<div class="content" >
+		
+			<h1><?php echo $ruleTitle;?></h1>
+			
+			<br>
+
+			<p><?php echo $ruleText; ?></p>
+
+		</div>
+
+
+<?php include("includes/footerFront.php");
