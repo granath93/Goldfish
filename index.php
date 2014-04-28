@@ -10,19 +10,36 @@
 include("includes/db.php");
 include("includes/headFront.php");
 $mysqli->set_charset("utf8");
-$entries = 'SELECT Entry.entryId, Entry.entryName, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
+$inspentries = 'SELECT Entry.entryId, Entry.entryName, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
 	FROM Entry 
 	LEFT JOIN EntryVoter
 	ON Entry.entryId=EntryVoter.entryId
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
-	ORDER BY Entry.timeStamp ASC';
+	ORDER BY EntryVoter.entryId DESC LIMIT 4';
+
+$topentries = 'SELECT Entry.entryId, Entry.entryName, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
+	FROM Entry 
+	LEFT JOIN EntryVoter
+	ON Entry.entryId=EntryVoter.entryId
+	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
+	ORDER BY EntryVoter.entryId DESC LIMIT 8';
+
+$dateentries = 'SELECT Entry.entryId, Entry.entryName, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
+	FROM Entry 
+	LEFT JOIN EntryVoter
+	ON Entry.entryId=EntryVoter.entryId
+	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
+	ORDER BY Entry.timeStamp DESC LIMIT 8';
 
 //hämtar från tabellen text i databasen
 $res = $mysqli->query('SELECT * FROM Text, Logotype') or die("Could not query database" . $mysqli->errno . 
 " : " . $mysqli->error);
-$entriesRes = $mysqli->query($entries) or die("Could not query database" . $mysqli->errno . 
+$entriesRes = $mysqli->query($inspentries) or die("Could not query database" . $mysqli->errno . 
 " : " . $mysqli->error);
-
+$entriesTop = $mysqli->query($topentries) or die("Could not query database" . $mysqli->errno . 
+" : " . $mysqli->error);
+$entriesDate = $mysqli->query($dateentries) or die("Could not query database" . $mysqli->errno . 
+" : " . $mysqli->error);
 
 //Vi kommer behöva göra någon slags JOIN eller UNION-sats för att få alla resultat i samma query, istället för flera olika. 
 //Jag och Dennis ska titta över det.
@@ -50,8 +67,34 @@ while($row = $res->fetch_object()) {
 
 			<br>
 
-			<p><?php echo $welcomeText; ?></p>
+			<p><?php echo $welcomeText; ?></p><br>
+			<img src="images/tjuvkika.png"><br>
+					 <?php 
+
+					while($row = $entriesRes->fetch_object()) :  
+						
+						?>
+						
+						<div class="entryWrapper">
+							<div class="entryText">
+								<h2><?php echo $row->entryName ?></h2> 
+							</div>
+							<div class="entryImg">
+								<img class="imgStyle" src="<?php echo $row->entryImage ?>">
+							</div>
+								
+							<div class="roster">
+							<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
+							<div class="arrow-right"></div>
+							<p class="votes"><strong><?php echo $row->votes ?></strong></p>
+							</div>	
+						
+						</div>
+
+
+					<?php endwhile; ?>
 		</div>
+
 
 
 	
@@ -76,7 +119,7 @@ while($row = $res->fetch_object()) {
 			 <h1> Här kommer du se topplistan </h1><br>
 			 <?php 
 
-					while($row = $entriesRes->fetch_object()) :  
+					while($row = $entriesTop->fetch_object()) :  
 						
 						?>
 						
@@ -108,7 +151,31 @@ while($row = $res->fetch_object()) {
 		<div class="content" >
 
 
-			<h1>De senaste bidragen</h1>
+			<h1>De senaste bidragen</h1><br>
+					 <?php 
+
+					while($row = $entriesDate->fetch_object()) :  
+						
+						?>
+						
+						<div class="entryWrapper">
+							<div class="entryText">
+								<h2><?php echo $row->entryName ?></h2> 
+							</div>
+							<div class="entryImg">
+								<img class="imgStyle" src="<?php echo $row->entryImage ?>">
+							</div>
+								
+							<div class="roster">
+							<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
+							<div class="arrow-right"></div>
+							<p class="votes"><strong><?php echo $row->votes ?></strong></p>
+							</div>	
+						
+						</div>
+
+
+					<?php endwhile; ?>
 
 
 		</div>
