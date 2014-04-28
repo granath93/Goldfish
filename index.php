@@ -62,12 +62,14 @@ while($row = $res->fetch_object()) {
 			</div>
 	
 		<div class="content" >
+			<div class="contenttext">
 					
 			<h1><?php echo $welcomeTitle;?></h1>
 
 			<br>
 
 			<p><?php echo $welcomeText; ?></p><br>
+			</div>
 			<img src="images/tjuvkika.png"><br>
 					 <?php 
 
@@ -103,9 +105,11 @@ while($row = $res->fetch_object()) {
 
 <div id="design"></div>
 		<div class="content" >
+			<div class="contenttext">
 			
 			
 			<h1>Här designar du din egna tröja!</h1>
+		</div>
 
 		</div>
 
@@ -116,7 +120,9 @@ while($row = $res->fetch_object()) {
 
 <div id="toplist"></div>
 		<div class="content" >
+			<div class="contenttext">
 			 <h1> Här kommer du se topplistan </h1><br>
+			</div>
 			 <?php 
 
 					while($row = $entriesTop->fetch_object()) :  
@@ -149,9 +155,11 @@ while($row = $res->fetch_object()) {
 
 	<div id="latest"></div>
 		<div class="content" >
+			<div class="contenttext">
 
 
 			<h1>De senaste bidragen</h1><br>
+			</div>
 					 <?php 
 
 					while($row = $entriesDate->fetch_object()) :  
@@ -189,12 +197,14 @@ while($row = $res->fetch_object()) {
 
 	<div id="rule"></div>
 		<div class="content" >
+			<div class="contenttext">
 		
 			<h1><?php echo $ruleTitle;?></h1>
 			
 			<br>
 
 			<p><?php echo $ruleText; ?></p>
+			</div>
 
 		</div>
 
