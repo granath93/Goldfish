@@ -108,7 +108,7 @@ while($row = $res->fetch_object()) {
 			<div class="contenttext">
 			
 			
-			<h1>Här designar du din egna tröja!</h1>
+			<h1>Här designar du produkten!</h1>
 			<br>
 
 			<div class="product">
@@ -121,6 +121,25 @@ while($row = $res->fetch_object()) {
     		<br>
 			<img src="images/product/productImage.png">
 			<iframe allowTransparency="true" name="leiframe"></iframe></div>
+		
+
+		<form action="" method="post">
+			<label  for ="designerName">Ditt namn:</label>
+			<input  type="text" id="designerName" name="designerName" /><br>
+			<label  for ="entryName">Döp ditt bidrag:</label>
+			<input  id="entryName" name="entryName"><br>
+			<label  for ="designerEmail">Din Email:</label>
+			<input  id="designerEmail" name="designerEmail"><br>
+			<button name="send">Skicka in mitt bidrag </button>
+			
+		</form>
+
+
+
+
+
+
+
 		</div>
 
 

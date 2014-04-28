@@ -13,11 +13,7 @@ $feedback="";
 
 
 <div class="leftNav">
-	<ul>
-		<li>	<div class="arrow"><?php if($session=="product")echo ">"?></div>    <a href="productAdmin.php?p=product">		Produkt</a> 		</li>	
-		<li>	<div class="arrow"><?php if($session=="color")echo ">"?></div>		<a href="productAdmin.php?p=color">			Färgval</a>			</li>
-		<li>	<div class="arrow"><?php if($session=="image")echo ">"?></div>		<a href="productAdmin.php?p=image">			Bild</a>			</li>
-	</ul>
+	
 </div>
 
 
@@ -79,34 +75,9 @@ END;
      &nbsp;&nbsp; <?php echo $feedback;?>
     </form><br><br>
  
-<img style="width: 300px; height: 300px;" src=" <?php echo $image;?>"/>
+<img style="height: 300px;" src=" <?php echo $image;?>"/>
 
- <?php  } 
 
-if($session=="color"){
-	$arrow="arrow-right"; 
-
-if(isset($_POST['buttonYes_x'])){
-	echo 'jaaa';
-}
-
-if(isset($_POST['buttonNo_x'])){
-	echo 'noo';
-}
-
-	?>
-
-	<div class="h1Admin">Färgval</div>
-		Tillåts färgval för att designa produkten?
-
-		<form method="post" action="productAdmin.php?p=color" enctype="multipart/form-data">
-		<br><br><input type="image" src="images/godkannBtn.png" class="button" name="buttonYes"></input> <p>Ja</p>
-		<br><input type="image" src="images/tabortBtn.png" class="button" name="buttonNo"></input> <p>Nej</p>
-
-		</form>
-		<!--<img src="images/godkannBtn.png" class="button" name="buttonYes" id="change1" onClick="checked(1)"> 
-		<img src="images/tabortBtn.png" class="button" name="buttonNo" id="change2" onClick="checked(2)"> -->
-		
 		
 <?php } 
 
@@ -121,7 +92,7 @@ if($session=="image"){
 		<br><br><input type="image" src="images/godkannBtn.png" class="button" name="buttonYes"></input> <p>Ja</p>
 		<br><input type="image" src="images/tabortBtn.png" class="button" name="buttonNo"></input> <p>Nej</p>
 
-		</form>
+		</form>-->
 
 <?php } ?>
 

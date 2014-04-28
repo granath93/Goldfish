@@ -152,21 +152,21 @@ nav .backroundNav{
 }
 
 .product{
- 		margin-left: 100px;
-		margin-right: auto;
+ 		float: left;
  }
 
   .product img{
- 		width:500px; 
+ 		width:450px; 
  		position: absolute;
   		z-index: 2;
  }
 
  .product iframe{
- 	width: 495px;
- 	height: 520px;
+ 	width: 450px;
+ 	height: 450px;
   	text-align: center; 
  	margin: auto;
+ 	border:none;
 
  }
 
