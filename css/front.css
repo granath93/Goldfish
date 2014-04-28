@@ -75,7 +75,6 @@ nav a:after{
 	height: 0; 
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
-	
 	border-bottom: 5px solid red;
 	margin-left:10px;
 	margin-top: 100px;
@@ -96,34 +95,37 @@ nav a:after{
 	margin-top:90px; 
 }
 .entryImg{
-	
+	background-color: none;
 }
 
 .entryText{
-	width:100px;
+	margin-bottom: 6px;
+	background-color: none;
+	text-align: center; 
+	width:180px;
 	font-size: 12px;
-	float:left;
-	margin-left: 3px;
+	float:center;
 
 }
-.entryText p,h3{
+.entryText p,h2{
 	display:inline; 
 	margin:0;
 }
 
 
 .entryWrapper{
-	outline:grey solid 1px;
+	background-color: none;
 	width: 180px;
 	float:left;
 	margin: 10px;
-	padding: 5px;
+	padding: 0px;
 	
 }
 .imgStyle{
+	background-color: none;
 	width:180px;
 	height: 180px;
-	outline: grey solid 1px; 
+	border: grey solid 1px; 
 	
 }
 
@@ -132,6 +134,17 @@ nav a:after{
 	margin:-55px 0 0 0;
 	z-index: 2;
 	position: fixed;
+}
+
+.roster{
+	border-left: grey solid 1px;
+	border-right: grey solid 1px;
+	border-bottom: grey solid 1px;
+	width:180px;
+	
+}
+.roster:hover{
+	background-color: #ffb182;
 }
 
 
@@ -151,8 +164,8 @@ nav a:after{
 
 }
 .votes{
-	display:inline-block;
-	color:red;
+	display:inline;
+	color:#C40000;
 	margin-left: 8px;
 }
 
@@ -173,16 +186,13 @@ nav a:after{
 	width:130px;
 	text-decoration:none;
 	text-align:center;
-	
 	border:none;
-	margin-left: 2px;
+	margin-left: 0px;
 
 
 
 }
-#rosta:hover {
-	background-color:#eea182;
-}
+
 #rosta:active {
 	position:relative;
 }

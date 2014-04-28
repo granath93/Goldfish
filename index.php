@@ -81,17 +81,18 @@ while($row = $res->fetch_object()) {
 						?>
 						
 						<div class="entryWrapper">
+							<div class="entryText">
+								<h2><?php echo $row->entryName ?></h2> 
+							</div>
 							<div class="entryImg">
 								<img class="imgStyle" src="<?php echo $row->entryImage ?>">
 							</div>
 								
-							<div class="entryText">
-								<h2><?php echo $row->entryName ?></h2> 
-							</div>
+							<div class="roster">
 							<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
 							<div class="arrow-right"></div>
 							<p class="votes"><strong><?php echo $row->votes ?></strong></p>
-								
+							</div>	
 						
 						</div>
 
