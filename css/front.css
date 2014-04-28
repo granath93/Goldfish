@@ -95,7 +95,6 @@ nav a:after{
 	margin:0 auto;
 	background-color:#FFFFFF;
 	width: 960px;
-	height: 1800px;
 	margin-top:90px; 
 }
 .entryImg{
@@ -103,7 +102,8 @@ nav a:after{
 }
 
 .entryText{
-	margin-bottom: 6px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	background-color: none;
 	text-align: center; 
 	width:180px;
@@ -121,15 +121,18 @@ nav a:after{
 	background-color: none;
 	width: 180px;
 	display:inline-block;
-	margin: 10px 10px 10px 15px;
+	margin: 40px 10px 10px 15px;
 	padding: 0px;
+	-webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 1);
+	-moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 1);
+	box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 1);
 	
 }
 .imgStyle{
 	background-color: none;
 	width:180px;
 	height: 180px;
-	border: grey solid 1px; 
+	
 	
 }
 

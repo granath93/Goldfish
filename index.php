@@ -68,7 +68,7 @@ while($row = $res->fetch_object()) {
 
 			<br>
 
-			<p><?php echo $welcomeText; ?></p><br>
+			<p><?php echo nl2br($welcomeText); ?></p><br>
 			</div>
 			<img src="images/tjuvkika.png"><br>
 					 <?php 
@@ -200,13 +200,15 @@ while($row = $res->fetch_object()) {
 			<div class="contenttext">
 		
 			<h1><?php echo $ruleTitle;?></h1>
-			
+			</div>
 			<br>
 
-			<p><?php echo $ruleText; ?></p>
-			</div>
+
+			<p><?php echo nl2br($ruleText); ?></p>
+			
 
 		</div>
+<img src="images/linje.png">
 
 
 <?php include("includes/footerFront.php");
