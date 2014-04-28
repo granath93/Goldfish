@@ -109,9 +109,24 @@ while($row = $res->fetch_object()) {
 			
 			
 			<h1>Här designar du din egna tröja!</h1>
+			<br>
+
+			<div class="product">
+			 
+			 <form method="post" action="upload_image.php" enctype="multipart/form-data" target="leiframe">
+      			<input type="file" name="image"/>
+      			<input type="submit" value="upload"/>
+    		</form>
+
+    		<br>
+			<img src="images/product/productImage.png">
+			<iframe allowTransparency="true" name="leiframe"></iframe></div>
 		</div>
 
+
 		</div>
+
+		
 
 
 	

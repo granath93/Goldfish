@@ -31,11 +31,29 @@ body {
 nav{
 	margin-left: 50%;
 	margin-top: 70px;
+	z-index: 10;
+}
+
+nav a{
+	margin:8.3px;
+	padding:5px 5px 13px 9px;
+	z-index: 10;
+	
 }
 
 nav .active{
 	background: rgba(152, 152, 152, 0.5);
 	display: inline;
+	z-index: 10;
+
+}
+
+nav .backroundNav{
+	background-color: white;
+	color: black;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	z-index: 10;
 
 }
 	
@@ -64,22 +82,6 @@ nav .active{
 	margin-left:10px;
 	margin-top: 100px;
 }
-
-.test{
-	background-color: red;
-}
-
-
-nav a:after{
-	width: 0; 
-	height: 0; 
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-bottom: 5px solid red;
-	margin-left:10px;
-	margin-top: 100px;
-}
-
 
 
 .content{
@@ -141,7 +143,32 @@ nav a:after{
 	margin:-55px 0 0 0;
 	z-index: 2;
 	position: fixed;
+	z-index: 20;
 }
+
+.logotype img{
+	height: 60px;
+	z-index: 20;
+}
+
+.product{
+ 		margin-left: 100px;
+		margin-right: auto;
+ }
+
+  .product img{
+ 		width:500px; 
+ 		position: absolute;
+  		z-index: 2;
+ }
+
+ .product iframe{
+ 	width: 495px;
+ 	height: 520px;
+  	text-align: center; 
+ 	margin: auto;
+
+ }
 
 .roster{
 	border-left: grey solid 1px;
@@ -161,15 +188,11 @@ nav a:after{
 	width: 100%;
 	padding:10px;
 	font-color: white;
-	
 	position: fixed;
 	float: left;
+	z-index: 10;
 }
 
-.topNav a{
-	margin:15px;
-
-}
 .votes{
 	display:inline;
 	color:#C40000;

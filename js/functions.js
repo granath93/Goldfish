@@ -38,6 +38,6 @@ function checked(x){
 
    $(function(){
     $('nav').on('click', 'a', function(){
-        $(this).addClass('arrow-up').siblings().removeClass('arrow-up');
+        $(this).addClass('backroundNav').siblings().removeClass('backroundNav');
     });
 });

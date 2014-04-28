@@ -1,13 +1,11 @@
 <?php 
 include("includes/db.php");
 
-	$res = $mysqli->query('SELECT * FROM Appearance, Logotype') or die("Could not query database" . $mysqli->errno . 
+	$res = $mysqli->query('SELECT * FROM Appearance') or die("Could not query database" . $mysqli->errno . 
 	" : " . $mysqli->error);
 
 	while($row = $res->fetch_object()) { 
 	$background = ($row->background);
-	$logga = ($row->logotypeImg);
-	
 	}
 
 ?>
@@ -29,7 +27,7 @@ include("includes/db.php");
 
 	<div class="topNav">
 		<nav>
-			<a class="" href="#start">  Start  </a>
+			<a class="backgroundNav" href="#start">  Start  </a>
 			<a class="" href="#design"> Designa </a>
 			<a class="" href="#toplist"> Topplista </a>
 			<a class="" href="#latest"> Senaste bidrag </a>
@@ -39,5 +37,3 @@ include("includes/db.php");
 
 	<div id="start"></div>
 		<div class="container">
-
-
