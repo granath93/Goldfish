@@ -13,7 +13,8 @@ $feedbackLogotype="";
 $feedbackUrl="";
 $empty="";
 $arrow="";
-
+$MaxAllowedWidth = 450;
+$MaxAllowedHeight =85;
 
 
 ?>
@@ -169,6 +170,16 @@ $res = $mysqli->query($query) or die("Failed");
 <h1>Logotyp</h1>
 
 
+<?php
+list($width, $height) = getimagesize("images/logotype/logotypeImage.png");
+if ($width > $MaxAllowedWidth){
+	echo $feedback ="Din bild är för bred!";
+}
+if($height > $MaxAllowedHeight){
+	echo $feedback = "Din bild är för hög!";
+}
+?>
+<br><br>
 <!-- Formuläret där användaren laddar upp logotypen från egen dator -->
 <form method="post" action="appearanceAdmin.php?p=Logotype" enctype="multipart/form-data">
       <label>Välj en bild som är din logotyp </label>
@@ -179,8 +190,10 @@ $res = $mysqli->query($query) or die("Failed");
   <br><br>
  
  <!-- Visar logotypen med hjälp av hela url-en som tidigare sparats i variabeln "$logotype"-->
-<img style="width: 300px;" src=" <?php echo $logotype;?>"/><br><br><br><br>
-
+<div class="logoPreview">
+<img src="<?php echo $logotype;?>"/>
+</div>
+<br><br><br>
 
 <form method="post" action="appearanceAdmin.php?p=Logotype" enctype="multipart/form-data">
 <!-- Formuläret där användaren sparar en URL kopplat till logotypen -->

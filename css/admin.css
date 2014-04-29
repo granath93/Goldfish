@@ -244,7 +244,12 @@ textarea.field.text{
 
 }
 
-
+.logoPreview {
+	width:250px;
+	height:85px;
+	outline: grey solid 1px;
+	background-color: #000000;
+}
 
 
 .statisticContent h3{
