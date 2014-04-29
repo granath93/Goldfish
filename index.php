@@ -97,44 +97,40 @@ while($row = $res->fetch_object()) {
 	<img src="images/linje.png" >
 			
 
-<div id="design"></div>
+<div id="design" ></div>
 		<div class="content" >
 			<div class="contenttext">
 			
 			
 			<h1>Här designar du produkten!</h1>
 			<br>
-
+</div>
 			<div class="product">
 			 
 			 <form method="post" action="upload_image.php" enctype="multipart/form-data" target="leiframe">
-      			<input type="file" name="image"/>
-      			<input type="submit" value="upload"/>
+      			<p>Välj en bild<p> 
+      			<input  type="file" name="image" />
+      			<input type="submit" value="Ladda upp"/>
     		</form>
 
     		<br>
 			<img src="images/product/productImage.png">
 			<iframe allowTransparency="true" name="leiframe"></iframe></div>
 		
-
-		<form action="" method="post">
-			<label  for ="designerName">Ditt namn:</label>
-			<input  type="text" id="designerName" name="designerName" /><br>
-			<label  for ="entryName">Döp ditt bidrag:</label>
-			<input  id="entryName" name="entryName"><br>
-			<label  for ="designerEmail">Din Email:</label>
-			<input  id="designerEmail" name="designerEmail"><br>
-			<button name="send">Skicka in mitt bidrag </button>
+	<div class="sendEntry">
+		<p>Skicka in ditt bidrag</p>
+		<p>Fyll i formuläret först</p><br><br>
+			<form action="" method="post">
+				
+				<input  type="text" id="designerName" name="designerName" value="Ditt namn" /><br>
+				<input  id="entryName" name="entryName" value="Döp ditt bidrag"><br>
+				<input  id="designerEmail" name="designerEmail" value="Din Email"><br>
+				<input type="submit" value="SKICKA BIDRAG!"/> 
 			
-		</form>
+			</form>
 
-
-
-
-
-
-
-		</div>
+	</div>
+		
 
 
 		</div>
