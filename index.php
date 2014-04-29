@@ -1,9 +1,3 @@
-<link rel="stylesheet" href="css/stylesheet.css">
-<link rel="bootstrap" href="css/bootstrap.css">
-<!-- av någon anledning verkar den inte vilja läsa in bootstrap.css, har bytt namn, lagt i olika ordningar etc-->
-<!--<link rel"normalize" href="normalize.css">-->
-<!--<link rel"unsemantic-grid-base" href="unsemantic-grid-base">-->
-
 <?php
 
 //inkluderar databaskopplingen
@@ -60,7 +54,7 @@ while($row = $res->fetch_object()) {
 	<div class="logotype">
 				<a href="<?php echo $logotypeUrl?>"><img src="<?php echo $logotype ?>"></a>
 			</div>
-	
+	<div id="start"></div>
 		<div class="content" >
 			<div class="contenttext">
 					

@@ -28,35 +28,41 @@ body {
 	
 }
 
-nav{
-	margin-left: 50%;
+
+/* ######### CSS for horizontal menu demo  ######### */
+
+ul.backgroundNav{
+background-color: black;
+color: white;
+margin-left: 50%;
 	margin-top: 70px;
 	z-index: 10;
+
 }
 
-nav a{
-	margin:8.3px;
-	padding:5px 5px 13px 9px;
+ul.backgroundNav li{
+display: inline;
+}
+
+ul.backgroundNav li a{
+	margin:3.9px;
+	padding:5px 5px 12px 9px;
 	z-index: 10;
-	
-}
-
-nav .active{
-	background: rgba(152, 152, 152, 0.5);
-	display: inline;
-	z-index: 10;
+	background-color: black;
+	color: white;
 
 }
 
-nav .backroundNav{
+ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 	background-color: white;
 	color: black;
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
 	z-index: 10;
-
 }
-	
+
+/* ######### CSS for vertical menu demo  ######### */
+
 /*
 ------------------------------------------- Här börjar classes ----------------------------------------
 */
@@ -226,3 +232,12 @@ nav .backroundNav{
 #rosta:active {
 	position:relative;
 }
+
+
+
+
+
+
+
+
+
