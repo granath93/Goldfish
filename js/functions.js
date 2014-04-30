@@ -35,6 +35,12 @@ function checked(x){
 
 
 
+function checkForm(){
+
+}
+
+
+
 /*
 * DD ScrollSpy Menu Script (c) Dynamic Drive (www.dynamicdrive.com)
 * Last updated: Dec 28, 12'

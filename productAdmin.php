@@ -64,6 +64,7 @@ END;
 		Välj en bild som skall representera produkten som skall designas. <br>
 	<ul>
 	<li>	Bilden får endast vara formatet .png eller .gif. <br></li>
+	<li>	Bilden skall vara kvadratisk, rekommenderar 400*400px stor.
 	<li>	Bilden skall vara transparent innanför konturerna och ha ett vitt lager utanför konturerna.<br></li>
 	<li>	Bilden kan även innehålla skuggor för att göra produkten effektfull. <br><br></li>
 </ul>

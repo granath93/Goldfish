@@ -5,21 +5,9 @@ $currentPage="entry";
 include("includes/headAdmin.php"); 
 include("includes/db.php");
 
-/*
-$hej = '';
-$query = <<<END
-	SELECT Entry.entryId, Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity, COUNT(EntryVoter.entryId) as votes
-	FROM Entry 
-	INNER JOIN Designer 
-	ON Entry.designerId=Designer.designerId
-	LEFT JOIN EntryVoter
-	ON Entry.entryId=EntryVoter.entryId
-	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity
-	ORDER BY Entry.timeStamp {$hej};
-END;*/
 
 
-	$query = 'SELECT Entry.entryId, Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity, COUNT(EntryVoter.entryId) as votes
+   	$query = 'SELECT *, COUNT(EntryVoter.entryId) as votes
 	FROM Entry 
 	INNER JOIN Designer 
 	ON Entry.designerId=Designer.designerId
@@ -28,28 +16,25 @@ END;*/
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity
 	ORDER BY Entry.timeStamp ASC';
 
-//Exekutiverar "verkställer" SELECT-satsen
-$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
-" : " . $mysqli->error);
 
-if(isset($_POST['approve_x'])){
-	echo "Bidraget är nu godkänt";
-} 
+	//Exekutiverar "verkställer" SELECT-satsen
+	$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
+	" : " . $mysqli->error);
 
-  if (isset($_POST['submit']))
+
+if (isset($_POST['submit']))
   {
-   if ($_POST['select'] == "1") {
+   if ($_POST['select'] == "2")  {
+   		echo "Senaste bidragen"; 
 
-   	$hej = 'ASC';
-   		 echo "Senaste bidragen"; 
   }
 
-   else { 
-
-   	$hej = 'DESC';
-   		echo "De med flest röster"; 
+   if ($_POST['select'] == "3") {
+		echo "De med flest röster"; 
    	}
-  }  
+  }
+
+
 ?>
 
 <div class="leftNav"></div>
@@ -57,11 +42,11 @@ if(isset($_POST['approve_x'])){
 
 		<div class="h1Admin">Alla bidrag</div>
 		
-				<form method="post" action="entryAdmin.php" enctype="multipart/form-data">
+				<form method="post" action="" enctype="multipart/form-data">
 					<select name="select">
 						<option value="1">Sortera bidragen</option>
-	 					<option value="1">Senaste bidragen</option>
-	  					<option value="2">Flest röster</option>
+	 					<option value="2">Senaste bidragen</option>
+	  					<option value="3">Flest röster</option>
 					</select>
 
 					&nbsp;&nbsp;<input name="submit" type="submit" value="Välj" /> 
@@ -76,6 +61,19 @@ if(isset($_POST['approve_x'])){
 						$entryId = ($row->entryId);
 						$entryDate = strtotime($row->timeStamp);
 						$entryDate = date("d M Y", $entryDate);
+						$accepted = ($row->accepted);
+
+						if( $accepted =='n'){
+							$approveEntryButton = "<a href='approveEntry.php?entryId=<?php echo $entryId; ?>'><img src='images/godkannBtn.png'></a>";
+							
+						}
+
+						else{
+							$approveEntryButton = "<img src='images/godkannGraBtn.png'>";
+						}
+
+
+
 						?>
 						
 						<div class="entryWrapper">
@@ -94,7 +92,7 @@ if(isset($_POST['approve_x'])){
 								
 							<div class="entryBtn">
 								
-								<a href="approveEntry.php?entryId=<?php echo $entryId; ?>"><img src="images/godkannBtn.png"></a>
+								<?php echo $approveEntryButton ?>
 							
 								<a href="deleteEntry.php?entryId=<?php echo $entryId; ?>"><img src="images/tabortBtn.png"></a>
 								

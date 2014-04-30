@@ -102,7 +102,7 @@ while($row = $res->fetch_object()) {
 			<div class="contenttext">
 			
 			
-			<h1>Här designar du produkten!</h1>
+			<h1>Designa produkten här!</h1>
 			<br>
 </div>
 			<div class="product">
@@ -119,13 +119,17 @@ while($row = $res->fetch_object()) {
 		
 	<div class="sendEntry">
 		<p>Skicka in ditt bidrag</p>
-		<p>Fyll i formuläret först</p><br><br>
+		<p>Fyll i formuläret först</p><br>
+			
+
 			<form action="" method="post">
-				
-				<input  type="text" id="designerName" name="designerName" value="Ditt namn" /><br>
-				<input  id="entryName" name="entryName" value="Döp ditt bidrag"><br>
-				<input  id="designerEmail" name="designerEmail" value="Din Email"><br>
-				<input type="submit" value="SKICKA BIDRAG!"/> 
+				<label for="designerName"> <p>Ditt namn</p> </label>
+				<input  type="text" id="designerName" name="designerName" value=""><br>
+				<label for="entryName"> <p>Döp ditt bidrag</p> </label>
+				<input  id="entryName" name="entryName" value=""  ><br>
+				<label for="designerEmail"> <p>Din Email</p> </label>
+				<input  id="designerEmail" name="designerEmail"  value=""><br>
+				<input type="submit" value="SKICKA BIDRAG!" " /> 
 			
 			</form>
 
