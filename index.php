@@ -4,26 +4,30 @@
 include("includes/db.php");
 include("includes/headFront.php");
 $mysqli->set_charset("utf8");
-$inspentries = 'SELECT Entry.entryId, Entry.entryName, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
+$accepted="";
+
+$inspentries = 'SELECT Entry.entryId, Entry.entryName, Entry.accepted, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
 	FROM Entry 
 	LEFT JOIN EntryVoter
 	ON Entry.entryId=EntryVoter.entryId
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
 	ORDER BY EntryVoter.entryId DESC LIMIT 4';
 
-$topentries = 'SELECT Entry.entryId, Entry.entryName, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
+$topentries = 'SELECT Entry.entryId, Entry.entryName, Entry.accepted, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
 	FROM Entry 
 	LEFT JOIN EntryVoter
 	ON Entry.entryId=EntryVoter.entryId
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
 	ORDER BY EntryVoter.entryId DESC LIMIT 8';
 
-$dateentries = 'SELECT Entry.entryId, Entry.entryName, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
+$dateentries = 'SELECT Entry.entryId, Entry.entryName, Entry.accepted, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
 	FROM Entry 
 	LEFT JOIN EntryVoter
 	ON Entry.entryId=EntryVoter.entryId
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
 	ORDER BY Entry.timeStamp DESC LIMIT 8';
+
+
 
 //hämtar från tabellen text i databasen
 $res = $mysqli->query('SELECT * FROM Text, Logotype') or die("Could not query database" . $mysqli->errno . 
@@ -49,6 +53,7 @@ while($row = $res->fetch_object()) {
 
 	}
 
+	
 ?>
 
 	<div class="logotype">
@@ -69,26 +74,32 @@ while($row = $res->fetch_object()) {
 
 					while($row = $entriesRes->fetch_object()) :  
 						
-						?>
 						
-						<div class="entryWrapper">
-							<div class="entryText">
-								<h2><?php echo $row->entryName ?></h2> 
-							</div>
-							<div class="entryImg">
-								<img class="imgStyle" src="<?php echo $row->entryImage ?>">
-							</div>
+
+						if($row->accepted == 'y'){
+							?>
+							
+							<div class="entryWrapper">
+								<div class="entryText">
+									<h2><?php echo $row->entryName ?></h2> 
+								</div>
+								<div class="entryImg">
+									<img class="imgStyle" src="<?php echo $row->entryImage ?>">
+								</div>
+									
+								<div class="roster">
 								
-							<div class="roster">
-							<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
-							<div class="arrow-right"></div>
-							<p class="votes"><strong><?php echo $row->votes ?></strong></p>
-							</div>	
-						
-						</div>
+								<!--<a href='addVote.php?entryId=<?php echo $row->entryId; ?>'></a>-->
+								<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
+								<div class="arrow-right"></div>
+								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
+								</div>	
+							
+							</div>
 
 
-					<?php endwhile; ?>
+					<?php }
+				endwhile; ?>
 		</div>
 
 
@@ -129,7 +140,7 @@ while($row = $res->fetch_object()) {
 				<input  id="entryName" name="entryName" value=""  ><br>
 				<label for="designerEmail"> <p>Din Email</p> </label>
 				<input  id="designerEmail" name="designerEmail"  value=""><br>
-				<input type="submit" value="SKICKA BIDRAG!" " /> 
+				<input type="submit" value="SKICKA BIDRAG!"  /> 
 			
 			</form>
 
@@ -155,26 +166,29 @@ while($row = $res->fetch_object()) {
 
 					while($row = $entriesTop->fetch_object()) :  
 						
-						?>
-						
-						<div class="entryWrapper">
-							<div class="entryText">
-								<h2><?php echo $row->entryName ?></h2> 
+
+							if($row->accepted == 'y'){
+							?>
+							
+							<div class="entryWrapper">
+								<div class="entryText">
+									<h2><?php echo $row->entryName ?></h2> 
+								</div>
+								<div class="entryImg">
+									<img class="imgStyle" src="<?php echo $row->entryImage ?>">
+								</div>
+									
+								<div class="roster">
+								<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
+								<div class="arrow-right"></div>
+								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
+								</div>	
+							
 							</div>
-							<div class="entryImg">
-								<img class="imgStyle" src="<?php echo $row->entryImage ?>">
-							</div>
-								
-							<div class="roster">
-							<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
-							<div class="arrow-right"></div>
-							<p class="votes"><strong><?php echo $row->votes ?></strong></p>
-							</div>	
-						
-						</div>
 
 
-					<?php endwhile; ?>
+						<?php }
+					endwhile; ?>
 		</div>
 
 
@@ -192,26 +206,29 @@ while($row = $res->fetch_object()) {
 
 					while($row = $entriesDate->fetch_object()) :  
 						
-						?>
-						
-						<div class="entryWrapper">
-							<div class="entryText">
-								<h2><?php echo $row->entryName ?></h2> 
+							if($row->accepted == 'y'){
+
+							?>
+							
+							<div class="entryWrapper">
+								<div class="entryText">
+									<h2><?php echo $row->entryName ?></h2> 
+								</div>
+								<div class="entryImg">
+									<img class="imgStyle" src="<?php echo $row->entryImage ?>">
+								</div>
+									
+								<div class="roster">
+								<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
+								<div class="arrow-right"></div>
+								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
+								</div>	
+							
 							</div>
-							<div class="entryImg">
-								<img class="imgStyle" src="<?php echo $row->entryImage ?>">
-							</div>
-								
-							<div class="roster">
-							<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
-							<div class="arrow-right"></div>
-							<p class="votes"><strong><?php echo $row->votes ?></strong></p>
-							</div>	
-						
-						</div>
 
 
-					<?php endwhile; ?>
+					<?php }
+					endwhile; ?>
 
 
 		</div>
