@@ -14,7 +14,7 @@ include("includes/db.php");
 	LEFT JOIN EntryVoter
 	ON Entry.entryId=EntryVoter.entryId
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity
-	ORDER BY Entry.timeStamp ASC';
+	ORDER BY Entry.timeStamp DESC';
 
 
 	//Exekutiverar "verkställer" SELECT-satsen
