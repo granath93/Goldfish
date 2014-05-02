@@ -107,7 +107,7 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 }
 .container {
 	margin:0 auto;
-	background-color:#FFFFFF;
+	background-color: rgba(255, 255, 255, 0.8);
 	width: 960px;
 	margin-top:90px; 
 }
@@ -118,7 +118,7 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 .entryText{
 	margin-top: 5px;
 	margin-bottom: 5px;
-	background-color: none;
+	background-color: white;
 	text-align: center; 
 	width:180px;
 	font-size: 12px;
@@ -132,7 +132,7 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 
 
 .entryWrapper{
-	background-color: none;
+	background-color: white;
 	width: 180px;
 	display:inline-block;
 	margin: 40px 10px 10px 15px;
@@ -189,7 +189,7 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 
 .product input[type="submit"],
 .product input[type="file"]{
-	background-color: #c6dab4;
+	background-color: #a2a2a2;
 	color: white;
 	font-weight: bold;
 	font-size: 18px;
@@ -206,7 +206,7 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 	border-left: grey solid 1px;
 	border-right: grey solid 1px;
 	border-bottom: grey solid 1px;
-	width:180px;
+	width:179px;
 	
 }
 .roster:hover{
@@ -219,7 +219,7 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 }
 
 .sendEntry input[type="submit"]{
-	background-color: #c6dab4;
+	background-color: #a2a2a2;
 	color: white;
 	font-weight: bold;
 	height: 50px;
@@ -255,6 +255,8 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 	z-index: 10;
 
 }
+
+
 
 .votes{
 	display:inline;
