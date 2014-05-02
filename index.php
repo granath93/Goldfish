@@ -24,6 +24,7 @@ $dateentries = 'SELECT Entry.entryId, Entry.entryName, Entry.accepted, Entry.tim
 	FROM Entry 
 	LEFT JOIN EntryVoter
 	ON Entry.entryId=EntryVoter.entryId
+	WHERE Entry.accepted = "y"
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
 	ORDER BY Entry.timeStamp DESC LIMIT 8';
 
