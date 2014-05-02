@@ -11,14 +11,14 @@ $inspentries = 'SELECT Entry.entryId, Entry.entryName, Entry.accepted, Entry.tim
 	LEFT JOIN EntryVoter
 	ON Entry.entryId=EntryVoter.entryId
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
-	ORDER BY EntryVoter.entryId DESC LIMIT 4';
+	ORDER BY  votes DESC LIMIT 4';
 
 $topentries = 'SELECT Entry.entryId, Entry.entryName, Entry.accepted, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
 	FROM Entry 
 	LEFT JOIN EntryVoter
 	ON Entry.entryId=EntryVoter.entryId
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
-	ORDER BY EntryVoter.entryId DESC LIMIT 8';
+	ORDER BY votes DESC LIMIT 8';
 
 $dateentries = 'SELECT Entry.entryId, Entry.entryName, Entry.accepted, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
 	FROM Entry 
