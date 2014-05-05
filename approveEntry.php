@@ -26,19 +26,7 @@ header("Location: entryAdmin.php");
 
 }
 
-/*$query =<<<END
-SELECT * 
-FROM Entry
-WHERE entryId = '$entryId';
-END;
 
-
-$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
-	" : " . $mysqli->error);
-
-while($row = $res->fetch_object()) { 
-	echo $row->accepted;
-}*/
 
 ?>
 

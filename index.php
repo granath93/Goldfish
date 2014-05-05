@@ -3,6 +3,7 @@
 //inkluderar databaskopplingen
 include("includes/db.php");
 include("includes/headFront.php");
+include("sendEntry.php");
 $mysqli->set_charset("utf8");
 $accepted="";
 
@@ -139,19 +140,19 @@ while($row = $res->fetch_object()) {
 				<input  type="text" id="designerName" name="designerName" value=""><br>
 				<label for="entryName"> <p>Döp ditt bidrag</p> </label>
 				<input  id="entryName" name="entryName" value=""  ><br>
+				<label for="designerCite"> <p>Ort du kommer från</p> </label>
+				<input  id="designerCity" name="designerCity"  value=""><br>
 				<label for="designerEmail"> <p>Din Email</p> </label>
 				<input  id="designerEmail" name="designerEmail"  value=""><br>
-				<input type="submit" value="SKICKA BIDRAG!"  /> 
+				<input name="agreeMail" type="checkbox" />
+				<label for="checkbox" name="agreeMailLabel">Ja, jag vill ha nyhetsbrev</label>
+				<input type="submit" name="sendEntry" value="SKICKA BIDRAG!"  /> 
 			
 			</form>
-
+			<?php echo $feedback; ?>
 	</div>
-		
-
-
 		</div>
 
-		
 
 
 	

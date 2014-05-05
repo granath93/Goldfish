@@ -202,6 +202,8 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 }
 
 
+
+
  
 .roster{
 	border-left: grey solid 1px;
@@ -232,11 +234,27 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 	text-align: center;
 }
 
+.sendEntry input[type="checkbox"]{
+	width: 20px;
+	height: 20px;
+	background-color: white;
+	cursor:pointer;
+	margin: 5px;
+	vertical-align: middle;
+	
+}
+
+.sendEntry p{
+	margin:8px;
+
+}
+
+
 .sendEntry input{
 	border-color: #c5d0ed;
 	border: 2px solid #c5d0ed;
 	height: 35px;
-	margin:4px;
+	margin:0 4px 15px 4px;
 	border-radius: 5px;
 	width:260px;
 	padding-left: 10px;

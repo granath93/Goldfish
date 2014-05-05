@@ -7,14 +7,24 @@ include("includes/db.php");
 
 
 
-   	$query = 'SELECT *, COUNT(EntryVoter.entryId) as votes
+  /* 	$query = 'SELECT *, COUNT(EntryVoter.entryId) as votes
 	FROM Entry 
 	INNER JOIN Designer 
 	ON Entry.designerId=Designer.designerId
 	LEFT JOIN EntryVoter
 	ON Entry.entryId=EntryVoter.entryId
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity
-	ORDER BY Entry.timeStamp DESC';
+	ORDER BY Entry.accepted ASC, Entry.timeStamp DESC';*/
+
+
+   	$query = 'SELECT *
+	FROM Entry 
+	INNER JOIN Designer 
+	ON Entry.designerId=Designer.designerId
+	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp, Designer.designerName, Designer.designerCity
+	ORDER BY Entry.accepted ASC, Entry.timeStamp DESC';
+
+
 
 
 	//Exekutiverar "verkställer" SELECT-satsen
@@ -64,14 +74,16 @@ if (isset($_POST['submit']))
 						$accepted = ($row->accepted);
 
 						if( $accepted =='n'){
-							$approveEntryButton = "<a href='approveEntry.php?entryId=<?php echo $entryId; ?>'><img src='images/godkannBtn.png'></a>";
+							$approveEntryButton = "images/godkannBtn.png";
+							$approveEntryButtonUrl = "<a href='approveEntry.php?entryId=$entryId'>";
 							
 						}
 
 						else{
-							$approveEntryButton = "<img src='images/godkannGraBtn.png'>";
+							
+							$approveEntryButton = "images/godkannGraBtn.png";
+							$approveEntryButtonUrl ="";
 						}
-
 
 
 						?>
@@ -89,10 +101,10 @@ if (isset($_POST['submit']))
 								<p>Antal röster:</p>
 								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
 							</div>
-								
+							
 							<div class="entryBtn">
 								
-								<?php echo $approveEntryButton ?>
+								<?php echo $approveEntryButtonUrl; ?> <img src='<?php echo $approveEntryButton; ?>'> </a>
 							
 								<a href="deleteEntry.php?entryId=<?php echo $entryId; ?>"><img src="images/tabortBtn.png"></a>
 								
@@ -101,7 +113,6 @@ if (isset($_POST['submit']))
 
 
 					<?php endwhile; ?>
-		
 	</div>
 
 

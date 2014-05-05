@@ -14,15 +14,13 @@ echo $entryId;
 
 if(isset($_GET['entryId'])){
 
-$query =<<<END
-DELETE FROM Entry
-WHERE entryId = '$entryId';
-END;
+$query = 'DELETE 
+FROM Entry
+WHERE Entry.entryId = $entryId';
+
 
 $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
 	" : " . $mysqli->error);
-
-
 
 
 header("Location: entryAdmin.php");
