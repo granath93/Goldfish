@@ -140,9 +140,9 @@ while($row = $res->fetch_object()) {
 				<input  type="text" id="designerName" name="designerName" value=""><br>
 				<label for="entryName"> <p>Döp ditt bidrag</p> </label>
 				<input  id="entryName" name="entryName" value=""  ><br>
-				<label for="designerCite"> <p>Ort du kommer från</p> </label>
+				<label for="designerCite"> <p>Ort</p> </label>
 				<input  id="designerCity" name="designerCity"  value=""><br>
-				<label for="designerEmail"> <p>Din Email</p> </label>
+				<label for="designerEmail"> <p>Email</p> </label>
 				<input  id="designerEmail" name="designerEmail"  value=""><br>
 				<input name="agreeMail" type="checkbox" />
 				<label for="checkbox" name="agreeMailLabel">Ja, jag vill ha nyhetsbrev</label>
