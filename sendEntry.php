@@ -5,9 +5,22 @@ include("includes/db.php");
 
 $feedback="";
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 if(isset($_POST['sendEntry'])){
 
 	if($_POST['designerName'] == "" || $_POST['entryName'] == "" || $_POST['designerEmail'] == "" || $_POST['designerCity'] == ""){
+
+			if($_POST['designerName'] == ""){
+				$feedback ="Du måste fylla i alla fält";
+			}
+			else{
+				$designerName = $_POST['designerName'];
+			}
+
+
+
+
 		$feedback ="Du måste fylla i alla fält";
 
 	}
@@ -49,6 +62,6 @@ END;
 
 	}
 }
-
+}
 
 ?>

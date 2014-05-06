@@ -34,11 +34,35 @@ function checked(x){
 }
 
 
+$(document).ready(function() {
 
-function checkForm(){
+	var errorHolder = document.getElementById('error')
 
-}
 
+$('input').focus(function() {
+
+  this.style.backgroundColor = ''
+
+  errorHolder.innerHTML = ''
+
+});
+
+ 
+
+$('input').blur(function() {
+
+
+  if ($(this).val()=='')
+   {
+
+    this.style.backgroundColor = '#ffc7c7'
+
+    errorHolder.innerHTML = 'Fyll i fältet.'
+
+  }
+
+});
+});
 
 
 /*

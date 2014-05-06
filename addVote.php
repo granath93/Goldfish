@@ -6,8 +6,9 @@ include("includes/db.php");
 $entryId = isset($_GET['entryId']) ? $_GET['entryId'] : '';
 
 $query =<<<END
-SELECT *
+SELECT votes
 FROM Entry
+WHERE entryId = $entryId
 END;
 
 
@@ -16,11 +17,11 @@ $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno
 
 while($row = $res->fetch_object()) { 
 	$entryVote = ($row->votes);
-	$entryId = ($row->entryId);
-
-
+	
 	$entryVote = $entryVote + 1; 
 
+
+	}
 
 
 $query =<<<END
@@ -33,14 +34,7 @@ END;
 $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
 	" : " . $mysqli->error);
 
-
-	}
-
-
-
 header("Location: index.php");
-
-
 
 
 ?>

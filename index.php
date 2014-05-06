@@ -7,6 +7,25 @@ include("sendEntry.php");
 $mysqli->set_charset("utf8");
 $accepted="";
 
+
+$inspentries = 'SELECT *
+	FROM Entry, Designer 
+	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
+	ORDER BY  votes DESC LIMIT 4';
+
+$topentries = 'SELECT *
+	FROM Entry, Designer 
+	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
+	ORDER BY votes DESC LIMIT 8';
+
+$dateentries = 'SELECT *
+	FROM Entry, Designer 
+	WHERE Entry.accepted = "y"
+	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
+	ORDER BY Entry.timeStamp DESC LIMIT 8';
+
+
+/*
 $inspentries = 'SELECT Entry.entryId, Entry.entryName, Entry.accepted, Entry.timeStamp, Entry.entryImage, COUNT(EntryVoter.entryId) as votes
 	FROM Entry 
 	LEFT JOIN EntryVoter
@@ -29,7 +48,7 @@ $dateentries = 'SELECT Entry.entryId, Entry.entryName, Entry.accepted, Entry.tim
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
 	ORDER BY Entry.timeStamp DESC LIMIT 8';
 
-
+*/
 
 //hämtar från tabellen text i databasen
 $res = $mysqli->query('SELECT * FROM Text, Logotype') or die("Could not query database" . $mysqli->errno . 
@@ -91,8 +110,8 @@ while($row = $res->fetch_object()) {
 									
 								<div class="roster">
 								
-								<!--<a href='addVote.php?entryId=<?php echo $row->entryId; ?>'></a>-->
-								<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
+								<a href='addVote.php?entryId=<?php echo $row->entryId; ?>'>
+								<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" /></a>
 								<div class="arrow-right"></div>
 								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
 								</div>	
@@ -135,8 +154,9 @@ while($row = $res->fetch_object()) {
 		<p>Fyll i formuläret först</p><br>
 			
 
-			<form action="" method="post">
-				<label for="designerName"> <p>Ditt namn</p> </label>
+			<form action="" method="post" >
+				<label for="designerName"> <p>Ditt namn</p> </label> <div id="error"></div>
+
 				<input  type="text" id="designerName" name="designerName" value=""><br>
 				<label for="entryName"> <p>Döp ditt bidrag</p> </label>
 				<input  id="entryName" name="entryName" value=""  ><br>
@@ -162,7 +182,7 @@ while($row = $res->fetch_object()) {
 <div id="toplist"></div>
 		<div class="content" >
 			<div class="contenttext">
-			 <h1> Här kommer du se topplistan </h1><br>
+			 <h1> Topplistan, topp 8</h1><br>
 			</div>
 			 <?php 
 
@@ -181,7 +201,8 @@ while($row = $res->fetch_object()) {
 								</div>
 									
 								<div class="roster">
-								<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
+								<a href='addVote.php?entryId=<?php echo $row->entryId; ?>'>
+								<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" /></a>
 								<div class="arrow-right"></div>
 								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
 								</div>	
@@ -202,7 +223,7 @@ while($row = $res->fetch_object()) {
 			<div class="contenttext">
 
 
-			<h1>De senaste bidragen</h1><br>
+			<h1>De senaste 8 bidragen</h1><br>
 			</div>
 					 <?php 
 
@@ -221,7 +242,8 @@ while($row = $res->fetch_object()) {
 								</div>
 									
 								<div class="roster">
-								<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" />
+								<a href='addVote.php?entryId=<?php echo $row->entryId; ?>'>
+								<input id="rosta" name="rosta" type="submit" value="Lägg din röst!" /></a>
 								<div class="arrow-right"></div>
 								<p class="votes"><strong><?php echo $row->votes ?></strong></p>
 								</div>	
