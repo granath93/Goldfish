@@ -151,7 +151,7 @@ while($row = $res->fetch_object()) {
 		
 	<div class="sendEntry">
 		<p>Skicka in ditt bidrag</p>
-		<p>Fyll i formuläret först</p><br>
+		<p><strong>Du måste fylla i alla fält först</strong></p><br>
 			
 
 			<form action="" method="post" >
@@ -178,7 +178,8 @@ while($row = $res->fetch_object()) {
 				<input type="submit" name="sendEntry" value="SKICKA BIDRAG!"  /> 
 			
 			</form>
-			<?php echo $feedback; ?>
+
+		
 	</div>
 		</div>
 

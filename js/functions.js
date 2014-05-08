@@ -33,6 +33,7 @@ function checked(x){
 
 }
 
+/* ----------------------- FORMLÄRET I FRONTEND SKICKA BIDRAGET ---------------- */
 
 $(document).ready(function() {
 
@@ -42,8 +43,7 @@ $('#designerName').focus(function() {
 	var errorHolder = document.getElementById('errorDesignerName')
 
   this.style.backgroundColor = ''
-
-
+  this.style.borderColor = ''
   errorHolder.innerHTML = ''
 
 });
@@ -53,8 +53,7 @@ $('#entryName').focus(function() {
 	var errorHolder = document.getElementById('errorEntryName')
 
   this.style.backgroundColor = ''
-
-
+  this.style.borderColor = ''
   errorHolder.innerHTML = ''
 
 });
@@ -65,8 +64,7 @@ $('#designerCity').focus(function() {
 	var errorHolder = document.getElementById('errorDesignerCity')
 
   this.style.backgroundColor = ''
-
-
+  this.style.borderColor = ''
   errorHolder.innerHTML = ''
 
 });
@@ -77,8 +75,7 @@ $('#designerEmail').focus(function() {
 	var errorHolder = document.getElementById('errorDesignerEmail')
 
   this.style.backgroundColor = ''
-
-
+    this.style.borderColor = ''
   errorHolder.innerHTML = ''
 
 });
@@ -93,8 +90,8 @@ $('#designerName').blur(function() {
    	var errorHolder = document.getElementById('errorDesignerName')
 
     this.style.backgroundColor = '#ffc7c7'
-
-    errorHolder.innerHTML = 'Fyll i fältet.'
+      this.style.borderColor = 'gray'
+    errorHolder.innerHTML = 'Fyll i fältet'
 
   }
 
@@ -109,8 +106,8 @@ $('#entryName').blur(function() {
    	var errorHolder = document.getElementById('errorEntryName')
 
     this.style.backgroundColor = '#ffc7c7'
-
-    errorHolder.innerHTML = 'Fyll i fältet.'
+    this.style.borderColor = 'gray'
+    errorHolder.innerHTML = 'Fyll i fältet'
 
   }
 
@@ -125,8 +122,8 @@ $('#designerCity').blur(function() {
    	var errorHolder = document.getElementById('errorDesignerCity')
 
     this.style.backgroundColor = '#ffc7c7'
-
-    errorHolder.innerHTML = 'Fyll i fältet.'
+    this.style.borderColor = 'gray'
+    errorHolder.innerHTML = 'Fyll i fältet'
 
   }
 
@@ -141,13 +138,17 @@ $('#designerEmail').blur(function() {
    	var errorHolder = document.getElementById('errorDesignerEmail')
 
     this.style.backgroundColor = '#ffc7c7'
-
-    errorHolder.innerHTML = 'Fyll i fältet.'
+    this.style.borderColor = 'gray'
+    errorHolder.innerHTML = 'Fyll i fältet'
 
   }
 
 });
 });
+
+
+
+/* ------------------------- MENYN I FRONTEND -------------------------*/
 
 
 /*

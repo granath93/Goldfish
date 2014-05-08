@@ -221,6 +221,16 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 
 }
 
+
+.sendEntryError{
+	color:red;
+	font-size: 25px;
+	margin-top: 15px;
+	padding: 8px 5px 8px 5px ;
+	border-radius: 4px;
+
+}
+
 .sendEntry input[type="submit"]{
 	background-color: #a2a2a2;
 	color: white;
