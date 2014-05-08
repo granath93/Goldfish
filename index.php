@@ -155,17 +155,26 @@ while($row = $res->fetch_object()) {
 			
 
 			<form action="" method="post" >
-				<label for="designerName"> <p>Ditt namn</p> </label> <div id="error"></div>
+				<label for="designerName"> <p>Ditt namn</p> </label> <div id="errorDesignerName"></div>
 
 				<input  type="text" id="designerName" name="designerName" value=""><br>
-				<label for="entryName"> <p>Döp ditt bidrag</p> </label>
+
+				<label for="entryName"> <p>Döp ditt bidrag</p> </label> <div id="errorEntryName"></div>
+
 				<input  id="entryName" name="entryName" value=""  ><br>
-				<label for="designerCite"> <p>Ort</p> </label>
+
+				<label for="designerCity"> <p>Ort</p> </label> <div id="errorDesignerCity"></div>
+
 				<input  id="designerCity" name="designerCity"  value=""><br>
-				<label for="designerEmail"> <p>Email</p> </label>
+
+				<label for="designerEmail"> <p>Email</p> </label> <div id="errorDesignerEmail"></div>
+ 
 				<input  id="designerEmail" name="designerEmail"  value=""><br>
+
 				<input name="agreeMail" type="checkbox" />
+
 				<label for="checkbox" name="agreeMailLabel">Ja, jag vill ha nyhetsbrev</label>
+
 				<input type="submit" name="sendEntry" value="SKICKA BIDRAG!"  /> 
 			
 			</form>

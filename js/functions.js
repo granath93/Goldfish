@@ -36,24 +36,109 @@ function checked(x){
 
 $(document).ready(function() {
 
-	var errorHolder = document.getElementById('error')
 
+$('#designerName').focus(function() {
 
-$('input').focus(function() {
+	var errorHolder = document.getElementById('errorDesignerName')
 
   this.style.backgroundColor = ''
+
 
   errorHolder.innerHTML = ''
 
 });
 
- 
+$('#entryName').focus(function() {
 
-$('input').blur(function() {
+	var errorHolder = document.getElementById('errorEntryName')
+
+  this.style.backgroundColor = ''
+
+
+  errorHolder.innerHTML = ''
+
+});
+
+
+$('#designerCity').focus(function() {
+
+	var errorHolder = document.getElementById('errorDesignerCity')
+
+  this.style.backgroundColor = ''
+
+
+  errorHolder.innerHTML = ''
+
+});
+
+
+$('#designerEmail').focus(function() {
+
+	var errorHolder = document.getElementById('errorDesignerEmail')
+
+  this.style.backgroundColor = ''
+
+
+  errorHolder.innerHTML = ''
+
+});
+
+
+$('#designerName').blur(function() {
 
 
   if ($(this).val()=='')
    {
+
+   	var errorHolder = document.getElementById('errorDesignerName')
+
+    this.style.backgroundColor = '#ffc7c7'
+
+    errorHolder.innerHTML = 'Fyll i fältet.'
+
+  }
+
+});
+
+$('#entryName').blur(function() {
+
+
+  if ($(this).val()=='')
+   {
+
+   	var errorHolder = document.getElementById('errorEntryName')
+
+    this.style.backgroundColor = '#ffc7c7'
+
+    errorHolder.innerHTML = 'Fyll i fältet.'
+
+  }
+
+});
+
+$('#designerCity').blur(function() {
+
+
+  if ($(this).val()=='')
+   {
+
+   	var errorHolder = document.getElementById('errorDesignerCity')
+
+    this.style.backgroundColor = '#ffc7c7'
+
+    errorHolder.innerHTML = 'Fyll i fältet.'
+
+  }
+
+});
+
+$('#designerEmail').blur(function() {
+
+
+  if ($(this).val()=='')
+   {
+
+   	var errorHolder = document.getElementById('errorDesignerEmail')
 
     this.style.backgroundColor = '#ffc7c7'
 

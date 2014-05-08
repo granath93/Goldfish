@@ -299,6 +299,11 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 ------------------------------------------- Här börjar id ----------------------------------------
 */
 
+#errorDesignerName, #errorEntryName, #errorDesignerCity, #errorDesignerEmail{
+	color:red;
+
+}
+
 #rosta{
 	background-color:#ffb182;
 	display:inline;
