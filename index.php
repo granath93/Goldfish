@@ -8,6 +8,7 @@ $mysqli->set_charset("utf8");
 $accepted="";
 
 
+
 $inspentries = 'SELECT *
 	FROM Entry, Designer 
 	GROUP BY Entry.entryName, Entry.entryImage, Entry.timeStamp
@@ -154,7 +155,7 @@ while($row = $res->fetch_object()) {
 		<p><strong>Du måste fylla i alla fält först</strong></p><br>
 			
 
-			<form action="" method="post" >
+			<form action="index.php#design" method="post" >
 				<label for="designerName"> <p>Ditt namn</p> </label> <div id="errorDesignerName"></div>
 
 				<input  type="text" id="designerName" name="designerName" value=""><br>
@@ -178,7 +179,7 @@ while($row = $res->fetch_object()) {
 				<input type="submit" name="sendEntry" value="SKICKA BIDRAG!"  /> 
 			
 			</form>
-
+				
 		
 	</div>
 		</div>
