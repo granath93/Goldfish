@@ -5,7 +5,6 @@ include("includes/db.php");
 
 
 
-
 if(isset($_POST['sendEntry'])){
 
 	if($_POST['designerName'] == "" || $_POST['entryName'] == "" || $_POST['designerEmail'] == "" || $_POST['designerCity'] == ""){
@@ -31,57 +30,60 @@ if(isset($_POST['sendEntry'])){
 
 			if(isset($_POST['agreeMail'])){
 
-				$query =<<<END
-				INSERT INTO Designer
-				(designerName, designerEmail, designerCity, mailAgree)
-				VALUES ('$designerName', '$designerEmail', '$designerCity', 'y');
+					$query=<<<END
+					INSERT INTO Designer (designerName, designerEmail, designerCity, mailAgree) 
+					VALUES('$designerName', '$designerEmail', '$designerCity', 'y');
 END;
+					$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
+					" : " . $mysqli->error);
 
-			$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
-			" : " . $mysqli->error);
+
+					$query2=<<<END
+					 INSERT INTO Entry (designerId, entryName, entryImage, accepted) 
+					 VALUES(LAST_INSERT_ID(), '$entryName', 'images/entry/pic.jpg', 'n');
+END;
+ 
+					$res = $mysqli->query($query2) or die("Could not query database" . $mysqli->errno . 
+					" : " . $mysqli->error);
 
 			?><script> alert("Tack för ditt bidrag! Du kommer få mail.");</script><?php
 
 			}
 
+
+
+
+
+
+
 			else{
+				
+
 				?><script> alert("Tack för ditt bidrag, du slipper mail.");</script><?php
 
-				$query =<<<END
-				INSERT INTO Designer
-				(designerName, designerEmail, designerCity, mailAgree)
-				VALUES ('$designerName', '$designerEmail', '$designerCity', 'n');
-
+	
+					$query=<<<END
+					INSERT INTO Designer (designerName, designerEmail, designerCity, mailAgree) 
+					VALUES('$designerName', '$designerEmail', '$designerCity', 'n');
 END;
+					$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
+					" : " . $mysqli->error);
 
 
-			$res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
-			" : " . $mysqli->error);
-/*
-
-$designerID=mysql_insert_id($mysqli);
-
-
-							$query2 =<<<END
-				INSERT INTO Entry
-				(entryName, accepted, designerId)
-				VALUES ('$entryName', 'n', '$designerID');
-
+					$query2=<<<END
+					 INSERT INTO Entry (designerId, entryName, entryImage, accepted) 
+					 VALUES(LAST_INSERT_ID(), '$entryName', 'images/entry/pic.jpg', 'n');
 END;
+ 
+					$res = $mysqli->query($query2) or die("Could not query database" . $mysqli->errno . 
+					" : " . $mysqli->error);
+				};
 
 
-			$res = $mysqli->query($query2) or die("Could not query database" . $mysqli->errno . 
-			" : " . $mysqli->error);
+		}
 
-*/
-			}
-
-
-
-
-
-	}
 }
+
 
 
 ?>

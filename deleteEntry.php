@@ -14,10 +14,11 @@ echo $entryId;
 
 if(isset($_GET['entryId'])){
 
-$query = 'DELETE 
+$query =<<<END
+DELETE 
 FROM Entry
-WHERE Entry.entryId = $entryId';
-
+WHERE entryId = $entryId;
+END;
 
 $res = $mysqli->query($query) or die("Could not query database" . $mysqli->errno . 
 	" : " . $mysqli->error);

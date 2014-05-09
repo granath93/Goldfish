@@ -1,8 +1,15 @@
 <?php
 
- 	move_uploaded_file($_FILES['image']['tmp_name'], 'images/pic.jpg');
+/*
+	$imageName = $_FILES['image']['name'];
+	echo $imageName;
 
-		list($width, $height) = getimagesize("images/pic.jpg");
+ 	move_uploaded_file($_FILES['image']['tmp_name'], 'images/entry/'.$imageName.'.jpg');
+*/
+
+ 	move_uploaded_file($_FILES['image']['tmp_name'], 'images/entry/pic.jpg');
+
+		list($width, $height) = getimagesize("images/entry/pic.jpg");
 	if ($width > $height){
 		$size = "height: 350px";
 	}
@@ -22,6 +29,7 @@
   	
   </head>
   <body>
-    <img style=" <?php echo $size ?> " src="images/pic.jpg?v=<?php echo rand(0,1000) // rand() prevents the browser from displaying a previously cached image ?>"/>
+ 	 <img style=" <?php echo $size ?> " src="images/entry/pic.jpg?v=<?php echo rand(0,1000) // rand() prevents the browser from displaying a previously cached image ?>"/>
+   <!-- <img style=" <?php echo $size ?> " src="images/entry/<?php echo $imageName?>.jpg?v=<?php echo rand(0,1000) // rand() prevents the browser from displaying a previously cached image ?>"/>-->
   </body>
 </html>

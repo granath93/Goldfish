@@ -168,7 +168,7 @@ while($row = $res->fetch_object()) {
 
 				<input  id="designerCity" name="designerCity"  value=""><br>
 
-				<label for="designerEmail"> <p>Email</p> </label> <div id="errorDesignerEmail"></div>
+				<label for="designerEmail"> <p>Email</p> </label> <div class="msg error">Ingen riktigt email</div> <div class="msg success">Rätt!</div>
  
 				<input  id="designerEmail" name="designerEmail"  value=""><br>
 
@@ -180,7 +180,8 @@ while($row = $res->fetch_object()) {
 			
 			</form>
 				
-		
+	
+
 	</div>
 		</div>
 

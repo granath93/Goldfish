@@ -281,7 +281,15 @@ ul.backgroundNav li a:hover, ul.backgroundNav li a.selected{
 	margin-left: 25px;
 }
 
-
+.sendEntry .msg {
+    display: none;
+}
+.sendEntry .validEmail {
+    color: red;
+}
+.sendEntry .success {
+    color: green;
+}
 
 .topNav {
 	background-color: black;
